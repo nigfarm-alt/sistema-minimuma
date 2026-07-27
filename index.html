@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Система минимума — Дмитрий Громов</title>
+<meta name="description" content="Персональное ведение. Снижение жира с 25–30% до 12–15% за 4–5 месяцев без голода и многочасовых тренировок. Дмитрий Громов — 20 лет практики, −32 кг личный результат.">
+<meta name="theme-color" content="#1C1917">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Система минимума — Дмитрий Громов">
+<meta property="og:description" content="Снизить жир до 12–15% за 4–5 месяцев. Без голода, без многочасовых тренировок, не выпадая из работы и семьи.">
+<meta property="og:image" content="спортивное.png">
+<meta property="og:locale" content="ru_RU">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Система минимума — Дмитрий Громов">
+<meta name="twitter:description" content="Снизить жир до 12–15% за 4–5 месяцев. Без голода и многочасовых тренировок.">
+<meta name="twitter:image" content="спортивное.png">
+
+<!-- Favicon -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23C4522A'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='%23F2EFE8' font-family='Georgia, serif' font-weight='700'>G</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --cream: #F2EFE8;
+  --coal: #1C1917;
+  --coal-mid: #2A2622;
+  --terra: #C4522A;
+  --olive: #6B7355;
+  --text: #141210;
+  --muted: #7A746D;
+  --border: #E0DDD6;
+  --border-dark: #3A3530;
+  --light-bg: #FAF8F3;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--cream); color: var(--text); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.65; font-size: 16px; }
+.container { max-width: 800px; margin: 0 auto; padding: 0 28px; }
+
+/* HERO */
+.hero { background: var(--coal); color: var(--cream); overflow: hidden; }
+.hero-inner { display: grid; grid-template-columns: 1fr 320px; align-items: stretch; max-width: 1080px; margin: 0 auto; }
+.hero-text { padding: 56px 40px 56px 52px; display: flex; flex-direction: column; justify-content: center; }
+.hero-eyebrow { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--terra); margin-bottom: 24px; font-weight: 500; }
+.hero-title { font-family: 'DM Serif Display', serif; font-size: clamp(40px, 5.5vw, 62px); line-height: 1.02; letter-spacing: -0.01em; margin-bottom: 22px; color: var(--cream); }
+.hero-title em { font-style: italic; color: var(--terra); }
+.hero-contra { font-size: 14px; color: #A8A099; line-height: 1.7; max-width: 360px; margin-bottom: 36px; }
+.hero-contra strong { color: var(--cream); font-weight: 500; }
+.hero-stats { display: flex; gap: 28px; flex-wrap: wrap; padding-top: 28px; border-top: 1px solid var(--border-dark); }
+.stat-num { font-family: 'DM Serif Display', serif; font-size: 24px; color: var(--terra); display: block; margin-bottom: 2px; }
+.stat-label { font-size: 10px; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; }
+.hero-photo { background: var(--coal-mid); position: relative; overflow: hidden; display: flex; }
+.hero-photo img { width: 100%; object-fit: cover; object-position: top center; display: block; flex: 1; }
+
+/* PROMISE STRIP */
+.promise-strip { background: var(--terra); padding: 20px 28px; }
+.promise-strip p { font-size: 14px; color: rgba(255,255,255,0.92); text-align: center; max-width: 640px; margin: 0 auto; line-height: 1.5; }
+.promise-strip strong { color: #fff; font-weight: 600; }
+
+/* SECTIONS */
+.section { padding: 64px 0; border-bottom: 1px solid var(--border); }
+.section-eyebrow { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; font-weight: 500; }
+.section-title { font-family: 'DM Serif Display', serif; font-size: clamp(24px, 3.5vw, 34px); line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 32px; }
+
+/* SOCIAL PROOF */
+.proof-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.proof-card { background: var(--light-bg); border: 1px solid var(--border); padding: 24px; transition: border-color 0.2s ease; }
+.proof-card:hover { border-color: #C8C2B8; }
+.proof-result { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--terra); margin-bottom: 4px; }
+.proof-name { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+.proof-text { font-size: 13px; color: #555; line-height: 1.6; }
+
+/* LISTS */
+.check-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.check-list li { display: grid; grid-template-columns: 16px 1fr; gap: 14px; font-size: 15px; color: #3A3530; line-height: 1.55; }
+.check-list li::before { content: '→'; color: var(--terra); font-size: 13px; margin-top: 2px; }
+
+/* NOT FOR */
+.notfor-block { background: var(--coal); color: var(--cream); padding: 32px 36px; }
+.notfor-block h3 { font-family: 'DM Serif Display', serif; font-size: 20px; margin-bottom: 12px; }
+.notfor-block p { font-size: 14px; color: #9A9390; line-height: 1.7; }
+
+/* PHASES */
+.phases { display: flex; flex-direction: column; }
+.phase { display: grid; grid-template-columns: 100px 1fr; gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--border); align-items: start; }
+.phase:last-child { border-bottom: none; }
+.phase-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--terra); padding-top: 3px; line-height: 1.5; }
+.phase-body h3 { font-family: 'DM Serif Display', serif; font-size: 19px; margin-bottom: 8px; }
+.phase-body p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+/* HOW IT WORKS */
+.delivery-block { background: var(--light-bg); border: 1px solid var(--border); padding: 28px 32px; margin-top: 32px; }
+.delivery-block h3 { font-size: 14px; font-weight: 600; margin-bottom: 16px; color: var(--text); }
+.delivery-list { display: flex; flex-direction: column; gap: 10px; }
+.delivery-list li { display: flex; gap: 12px; font-size: 13px; color: #555; line-height: 1.5; list-style: none; }
+.delivery-list li::before { content: '✓'; color: var(--olive); font-weight: 600; flex-shrink: 0; }
+
+/* INCLUDES */
+.includes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.include-item { background: var(--light-bg); padding: 22px 20px; }
+.include-item h4 { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 5px; }
+.include-item p { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+
+/* CERT */
+.cert-block { background: #F0EDE3; border-left: 3px solid var(--olive); padding: 20px 24px; margin-top: 32px; }
+.cert-block strong { color: var(--text); display: block; font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+.cert-block p { font-size: 12.5px; color: var(--muted); }
+
+/* AUTHOR */
+.author-section { background: var(--coal); color: var(--cream); padding: 64px 0; }
+.author-inner { max-width: 800px; margin: 0 auto; padding: 0 28px; display: grid; grid-template-columns: 220px 1fr; gap: 44px; align-items: start; }
+.author-photo { overflow: hidden; }
+.author-photo img { width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover; object-position: top; }
+.author-text h2 { font-family: 'DM Serif Display', serif; font-size: 30px; color: var(--cream); margin-bottom: 6px; }
+.author-sub { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--terra); font-weight: 500; margin-bottom: 18px; }
+.author-text p { font-size: 14px; color: #9A9390; line-height: 1.75; margin-bottom: 20px; }
+.creds { display: flex; flex-direction: column; gap: 9px; }
+.cred { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: #C8C0B8; line-height: 1.4; }
+.cred::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--terra); flex-shrink: 0; margin-top: 5px; }
+
+/* PRICE */
+.price-section { padding: 64px 0; border-bottom: 1px solid var(--border); }
+.price-grid { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end; }
+.price-label { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; font-weight: 500; }
+.price-title { font-family: 'DM Serif Display', serif; font-size: 26px; margin-bottom: 10px; }
+.price-note { font-size: 14px; color: var(--muted); line-height: 1.65; max-width: 360px; }
+.price-amount { font-family: 'DM Serif Display', serif; font-size: 48px; color: var(--terra); line-height: 1; display: block; }
+.price-period { font-size: 13px; color: var(--muted); margin-top: 4px; text-align: right; }
+.price-min { font-size: 12px; color: #B0A898; margin-top: 4px; text-align: right; }
+
+/* FAQ */
+.faq { display: flex; flex-direction: column; gap: 0; }
+.faq-item { padding: 20px 0; border-bottom: 1px solid var(--border); }
+.faq-item:last-child { border-bottom: none; }
+.faq-item h4 { font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 8px; }
+.faq-item p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+/* CTA */
+.cta-section { background: var(--terra); padding: 64px 28px; text-align: center; }
+.cta-section h2 { font-family: 'DM Serif Display', serif; font-size: clamp(22px, 3.5vw, 34px); color: var(--cream); margin-bottom: 10px; line-height: 1.2; }
+.cta-section p { font-size: 14px; color: #F5E8E0; margin-bottom: 32px; line-height: 1.65; max-width: 440px; margin-left: auto; margin-right: auto; }
+.cta-btn {
+  display: inline-block;
+  background: var(--cream);
+  color: var(--terra);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 17px 44px;
+  text-decoration: none;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
+}
+.cta-btn:hover {
+  background: var(--coal);
+  color: var(--cream);
+  transform: translateY(-1px);
+}
+.cta-btn:active { transform: translateY(0); }
+
+@media (max-width: 640px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-text { padding: 44px 24px 36px; }
+  .hero-photo { height: 300px; }
+  .hero-photo img { height: 300px; }
+  .proof-grid { grid-template-columns: 1fr; }
+  .proof-grid .proof-card:nth-child(n) { width: 100%; }
+  .includes-grid { grid-template-columns: 1fr; }
+  .phase { grid-template-columns: 1fr; gap: 6px; }
+  .author-inner { grid-template-columns: 1fr; }
+  .price-grid { grid-template-columns: 1fr; }
+  .price-period, .price-min { text-align: left; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Дмитрий Громов · Персональное ведение</p>
+      <h1 class="hero-title">Система<br><em>минимума</em></h1>
+      <p class="hero-contra">
+        Большинство думает: нужно меньше есть и больше тренироваться.<br>
+        <strong>Я доказываю обратное.</strong> Короткие тренировки и питание без голода дают форму 12–15% жира — и ты остаёшься живым человеком, а не заложником зала.
+      </p>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">−32 кг</span><span class="stat-label">личный результат</span></div>
+        <div class="stat"><span class="stat-num">20 лет</span><span class="stat-label">практики</span></div>
+        <div class="stat"><span class="stat-num">290 кг</span><span class="stat-label">МС по становой</span></div>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="спортивное.png" alt="Дмитрий Громов">
+    </div>
+  </div>
+</section>
+
+<!-- PROMISE STRIP -->
+<div class="promise-strip">
+  <p>Снизить жир с <strong>25–30% до 12–15%</strong> за 4–5 месяцев. Без голода, без многочасовых тренировок, не выпадая из работы и семьи.</p>
+</div>
+
+<div class="container">
+
+  <!-- SOCIAL PROOF -->
+  <section class="section">
+    <p class="section-eyebrow">Результаты клиентов</p>
+    <h2 class="section-title">Что происходит за 4 месяца</h2>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <div class="proof-result">−9 кг</div>
+        <div class="proof-name">Песко-вегетарианец, 4 месяца</div>
+        <p class="proof-text">Минус 6 кг жира при сохранении мышц. Без голодовок, без отказа от принципов питания.</p>
+      </div>
+      <div class="proof-card">
+        <div class="proof-result">−22 кг</div>
+        <div class="proof-name">Подопечная, 1 год</div>
+        <p class="proof-text">С 93 кг до 71 кг за год. Постепенное снижение без потери мышечной массы.</p>
+      </div>
+      <div class="proof-card">
+        <div class="proof-result">−3,4 кг жира</div>
+        <div class="proof-name">Подопечная, биоимпеданс</div>
+        <p class="proof-text">С 63 до 59 кг — мышечная масса сохранена полностью. Жировая прослойка 20% (подкожная 10%) — самый низкий показатель за жизнь.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOR WHOM -->
+  <section class="section">
+    <p class="section-eyebrow">Для кого</p>
+    <h2 class="section-title">Это для тебя, если</h2>
+    <ul class="check-list">
+      <li>Хочешь снизить жир и сохранить мышцы — не жертвуя работой, семьёй и социальной жизнью</li>
+      <li>Устал от диет которые работают 2 недели и потом откат</li>
+      <li>Нет времени на 2-часовые тренировки 5 дней в неделю</li>
+      <li>Чувствуешь усталость, отёки, слабость — и не понимаешь почему</li>
+      <li>Хочешь понять как работает твоё тело, а не просто получить план и уйти</li>
+    </ul>
+  </section>
+
+  <!-- NOT FOR -->
+  <section class="section" style="padding-top: 0; border-bottom: none; padding-bottom: 0;">
+    <div class="notfor-block">
+      <h3>Мы не сойдёмся, если</h3>
+      <p>Ты ищешь быстрый результат за месяц любой ценой. Готов голодать или пахать по 10 подходов на каждую мышцу. Или хочешь просто получить план — и разобраться сам. Система минимума требует честности и готовности работать по правилам.</p>
+    </div>
+  </section>
+
+  <!-- PHASES -->
+  <section class="section">
+    <p class="section-eyebrow">Как это работает</p>
+    <h2 class="section-title">Три этапа одной системы</h2>
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-tag">Этап 0<br>~1 месяц</div>
+        <div class="phase-body">
+          <h3>Подготовка организма</h3>
+          <p>Если ты давно в дефиците или ешь неправильно — организм в стрессе. Сначала восстанавливаем: закрываем дефициты, убираем воспаление, нормализуем сон. Без этого диета не работает или даёт откат.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-tag">Этап 1<br>3–4 месяца</div>
+        <div class="phase-body">
+          <h3>Активный липолиз</h3>
+          <p>Снижение жировой прослойки 0.5–1% в неделю. Без потери мышц, без упадка сил. Тренировки 2–3 раза в неделю по 30–40 минут. Каждую неделю замеры: вес, объёмы, калипер. Ты видишь динамику — я корректирую план.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-tag">Этап 2<br>~1 месяц</div>
+        <div class="phase-body">
+          <h3>Закрепление</h3>
+          <p>Диетическая пауза. Организм адаптируется к новому весу — это физиология, не слабость. Закрепляем результат и формируем привычки которые работают без постоянного контроля.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOW DELIVERY WORKS -->
+    <div class="delivery-block">
+      <h3>Как выглядит работа</h3>
+      <ul class="delivery-list">
+        <li>Общение в Telegram — пишешь когда нужно, не раз в неделю по расписанию</li>
+        <li>Еженедельный отчёт из FatSecret — я разбираю ошибки питания если есть</li>
+        <li>Видео упражнений из зала — корректирую технику удалённо</li>
+        <li>Карта этапов в таблице — видишь весь маршрут и свою динамику</li>
+        <li>Нет курсовой платформы, нет личного кабинета — только живая работа</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- INCLUDES -->
+  <section class="section">
+    <p class="section-eyebrow">Что входит</p>
+    <h2 class="section-title">Ведение под ключ</h2>
+    <div class="includes-grid">
+      <div class="include-item"><h4>Карта на весь период</h4><p>Этапы, контрольные точки, ожидаемая динамика. Ты видишь маршрут, а не просто следующий шаг.</p></div>
+      <div class="include-item"><h4>Персональное питание</h4><p>БЖУ под твой метаболизм, образ жизни и цели. С реальными продуктами и вариантами для командировок.</p></div>
+      <div class="include-item"><h4>Тренировки с видеобазой</h4><p>Программа под твои возможности. Каждое упражнение — с видео правильной техники из одобренной библиотеки.</p></div>
+      <div class="include-item"><h4>Добавки и витамины</h4><p>Протокол под твои анализы и задачи. Без лишнего — только то, что реально нужно.</p></div>
+      <div class="include-item"><h4>Разбор анализов</h4><p>Смотрю что влияет на вес и самочувствие. При необходимости направляю к врачу.</p></div>
+      <div class="include-item"><h4>Контакт несколько раз в неделю</h4><p>Не созвон раз в неделю как у других. Пишешь по ходу — по питанию, тренировкам, самочувствию.</p></div>
+      <div class="include-item"><h4>Разбор техники удалённо</h4><p>Присылаешь видео из зала — разбираю ошибки и корректирую технику.</p></div>
+      <div class="include-item"><h4>Решения вне спорта</h4><p>Банкет, ОРВИ, командировка, стресс — как вести себя в любой ситуации без срыва.</p></div>
+    </div>
+    <div class="cert-block">
+      <strong>Сертификат — «Гипертрофия-2026», Лицей учёный фитнес</strong>
+      <p>Повышение квалификации в области гипертрофии и тренировочных протоколов, 2026 год.</p>
+    </div>
+  </section>
+
+  <!-- PRICE -->
+  <section class="price-section">
+    <div class="price-grid">
+      <div>
+        <p class="price-label">Стоимость</p>
+        <h2 class="price-title">Персональное ведение</h2>
+        <p class="price-note">Минимальный период — 4 месяца. Это физиология: меньше не имеет смысла, результат не закрепится. Оплата помесячно.</p>
+      </div>
+      <div>
+        <span class="price-amount">30 000 ₽</span>
+        <p class="price-period">в месяц</p>
+        <p class="price-min">минимум 4 месяца</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <p class="section-eyebrow">Частые вопросы</p>
+    <h2 class="section-title">Что спрашивают</h2>
+    <div class="faq">
+      <div class="faq-item">
+        <h4>Я веган / пескетарианец / не ем определённые продукты. Подойдёт?</h4>
+        <p>Да. Питание составляется под твои реальные ограничения. Один из клиентов — пескетарианец, минус 9 кг за 4 месяца без компромиссов с принципами.</p>
+      </div>
+      <div class="faq-item">
+        <h4>У меня нет времени на зал — работаю 10+ часов в день.</h4>
+        <p>Под это и создана система. 2–3 тренировки в неделю по 30–40 минут. Не нужно менять расписание — нужно встроить занятия в то что есть.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Почему минимум 4 месяца?</h4>
+        <p>Физиология. Организм адаптируется к изменениям постепенно. За 1–2 месяца можно получить результат, но не закрепить его. 4 месяца — это минимум для устойчивого изменения состава тела.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Как проходит первый созвон?</h4>
+        <p>Разбираем твою ситуацию: текущий режим, питание, цели, что мешает. Я объясняю что именно происходит с твоим телом и как вижу решение. Никакой продажи в лоб — просто разговор.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- AUTHOR -->
+<section class="author-section">
+  <div class="author-inner">
+    <div class="author-photo">
+      <img src="нейтральное.png" alt="Дмитрий Громов">
+    </div>
+    <div class="author-text">
+      <h2>Дмитрий Громов</h2>
+      <p class="author-sub">Персональный наставник</p>
+      <p>Прошёл путь от 132 кг с одышкой и отёками — до 12% жировой прослойки. Через рекорды, ожирение и травму позвоночника с частичным параличом ноги. Понял на себе что работает, а что — маркетинг.</p>
+      <div class="creds">
+        <span class="cred">Мастер спорта по становой тяге — 290 кг на соревнованиях</span>
+        <span class="cred">Дипломированный специалист по физической культуре</span>
+        <span class="cred">Сертификат «Гипертрофия-2026» — Лицей учёный фитнес</span>
+        <span class="cred">20 лет тренировочной практики</span>
+        <span class="cred">Личный результат — минус 32 кг без голода и многочасовых тренировок</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Первый шаг — бесплатный созвон</h2>
+  <p>Разберём твою ситуацию: что происходит с телом, что мешает результату, и подходим ли мы друг другу.</p>
+  <a class="cta-btn" href="https://t.me/gromov_sensei">Написать в Telegram</a>
+</section>
+
+</body>
+</html>
