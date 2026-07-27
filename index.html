@@ -166,28 +166,32 @@ body { background: var(--cream); color: var(--text); font-family: 'DM Sans', san
 }
 .cta-btn:active { transform: translateY(0); }
 
-@media (max-width: 768px) {
-  .hero-inner { grid-template-columns: 1fr; max-width: 100%; }
-  .hero-text { padding: 44px 24px 36px; }
+@media (max-width: 640px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+  .hero-text {
+    padding: 40px 24px 32px;
+  }
   .hero-photo {
-    height: auto;
-    aspect-ratio: 3 / 4;
-    max-height: 480px;
+    width: 100%;
+    height: 440px;
+    display: block;
   }
   .hero-photo img {
-    height: 100%;
     width: 100%;
+    height: 100%;
     object-fit: cover;
     object-position: top center;
+    display: block;
   }
   .proof-grid { grid-template-columns: 1fr; }
-  .proof-grid .proof-card:nth-child(n) { width: 100%; }
   .includes-grid { grid-template-columns: 1fr; }
   .phase { grid-template-columns: 1fr; gap: 6px; }
   .author-inner { grid-template-columns: 1fr; }
   .price-grid { grid-template-columns: 1fr; }
   .price-period, .price-min { text-align: left; }
-  .delivery-list li { font-size: 14px; }
 }
 </style>
 </head>
