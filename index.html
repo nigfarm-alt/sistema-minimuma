@@ -212,16 +212,73 @@ a { color: inherit; }
 .week-note { margin-top: 24px; font-size: 16px; color: var(--text-2); line-height: 1.7; }
 .week-note strong { color: var(--text); font-weight: 500; }
 
+/* документальные фрагменты */
+.proofs-title { font-size: 22px; margin: 44px 0 8px; }
+.proofs-sub { font-size: 15px; color: var(--text-2); line-height: 1.6; margin-bottom: 24px; max-width: 60ch; }
+.proofs-block { width: min(1120px, calc(100vw - 48px)); margin-left: 50%; transform: translateX(-50%); }
+.proofs { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.proofcard { margin: 0; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 22px 20px; display: flex; flex-direction: column; }
+.pc-when { font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--clay); font-weight: 600; margin-bottom: 7px; }
+.pc-lead { font-size: 15px; color: var(--text); line-height: 1.6; margin-bottom: 14px; }
+.proofcard a { display: block; border: 1px solid var(--line); border-radius: 3px; overflow: hidden; background: var(--paper-2); }
+.proofcard img { width: 100%; height: auto; display: block; }
+.pc-note { font-size: 14px; color: var(--text-2); line-height: 1.6; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); }
+
 /* ---------- КЕЙСЫ ---------- */
-.cases { display: flex; flex-direction: column; gap: 20px; }
-.case { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 32px; display: grid; grid-template-columns: 190px 1fr; gap: 34px; }
+.cases { display: flex; flex-direction: column; gap: 22px; }
+.case { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; display: grid; grid-template-columns: 330px 1fr; gap: 36px; align-items: start; }
+.case.no-photo { grid-template-columns: 190px 1fr; }
+
+.case-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.case-photos figure { margin: 0; }
+.case-photos a { display: block; overflow: hidden; border-radius: 3px; background: var(--paper-2); }
+.case-photos img { width: 100%; aspect-ratio: 1/2; object-fit: cover; display: block; transition: transform .4s ease; }
+.case-photos a:hover img { transform: scale(1.03); }
+.case-photos figcaption { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-3); margin-top: 8px; text-align: center; }
+.case-photos figcaption b { color: var(--clay); font-weight: 600; }
+
 .case-figure { border-right: 1px solid var(--line); padding-right: 26px; }
 .case-big { font-family: 'Literata', serif; font-size: 34px; color: var(--clay); line-height: 1.1; margin-bottom: 6px; }
 .case-who { font-size: 14px; color: var(--text-3); line-height: 1.5; }
-.case h3 { font-size: 19px; margin-bottom: 12px; line-height: 1.35; }
+.case-tag { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--clay); font-weight: 600; margin-bottom: 10px; }
+.case h3 { font-size: 20px; margin-bottom: 12px; line-height: 1.35; }
 .case p { font-size: 15.5px; color: var(--text-2); line-height: 1.7; margin-bottom: 12px; }
 .case p:last-child { margin-bottom: 0; }
-.case-quote { font-size: 15.5px; font-style: italic; color: var(--text); border-left: 2px solid var(--clay); padding-left: 16px; line-height: 1.6; }
+.case-quote { font-size: 15.5px; font-style: italic; color: var(--text); border-left: 2px solid var(--clay); padding-left: 16px; line-height: 1.6; margin-top: 18px; }
+
+/* дуга работы внутри кейса */
+.arc { margin: 18px 0 6px; border: 1px solid var(--line); border-radius: 3px; background: var(--paper); overflow: hidden; }
+.arc-step { display: grid; grid-template-columns: 118px 1fr; gap: 16px; padding: 13px 16px; align-items: baseline; }
+.arc-step + .arc-step { border-top: 1px solid var(--line); }
+.arc-when { font-size: 10.5px; letter-spacing: .09em; text-transform: uppercase; color: var(--clay); font-weight: 600; line-height: 1.5; }
+.arc-what { font-size: 13.5px; color: var(--text-2); line-height: 1.55; }
+.arc-what b { color: var(--text); font-weight: 500; }
+
+/* график веса */
+.case > * { min-width: 0; }
+.case-full { grid-column: 1 / -1; min-width: 0; margin-top: 26px; padding-top: 24px; border-top: 1px solid var(--line); }
+.case-full-title { font-family: 'Literata', serif; font-size: 17px; color: var(--text); margin-bottom: 4px; }
+.chart-wrap { margin: 14px 0 6px; position: relative; }
+.chart { width: 100%; height: auto; display: block; overflow: visible; }
+.ch-grid { stroke: var(--line); stroke-width: 1; }
+.ch-ax { font-family: 'Inter', sans-serif; font-size: 11px; fill: var(--text-3); }
+.ch-band { font-family: 'Inter', sans-serif; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; fill: var(--text-3); }
+.ch-line { fill: none; stroke: var(--clay); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.ch-dot { fill: var(--clay); stroke: #fff; stroke-width: 2; }
+.ch-val { font-family: 'Literata', serif; font-size: 13px; fill: var(--text); }
+.ch-hit { cursor: crosshair; }
+.ch-hover { fill: var(--clay); stroke: #fff; stroke-width: 2; opacity: 0; transition: opacity .12s; }
+.ch-tip { position: absolute; pointer-events: none; background: var(--ink); color: #F0EBE4; font-size: 12.5px; line-height: 1.4; padding: 7px 10px; border-radius: 3px; white-space: nowrap; opacity: 0; transform: translate(-50%, -140%); transition: opacity .12s; }
+.chart-cap { font-size: 13.5px; color: var(--text-3); line-height: 1.55; margin-top: 6px; }
+
+.metrics { margin: 18px 0 4px; border-top: 1px solid var(--line); }
+.metric { display: grid; grid-template-columns: 1fr auto; gap: 14px; align-items: baseline; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.metric-name { font-size: 14px; color: var(--text-2); }
+.metric-val { font-size: 15px; color: var(--text); white-space: nowrap; }
+.metric-val i { font-style: normal; color: var(--text-3); padding: 0 3px; }
+.metric-val b { font-weight: 500; color: var(--clay); }
+.metric.key .metric-name { color: var(--text); }
+
 .cases-note { margin-top: 26px; font-size: 15px; color: var(--text-3); line-height: 1.65; }
 
 /* ---------- ЧТО ВХОДИТ ---------- */
@@ -336,15 +393,21 @@ a { color: inherit; }
   .hero-stats { gap: 22px 30px; }
   .hero-actions { gap: 16px; }
   .hero-actions .btn { width: 100%; }
-  .signs, .fails, .principles, .includes, .week, .channels-grid, .format { grid-template-columns: 1fr; }
+  .signs, .fails, .principles, .includes, .week, .channels-grid, .format, .proofs { grid-template-columns: 1fr; }
+  .proofs-block { width: 100%; margin-left: 0; transform: none; }
+  .chart-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .chart { min-width: 660px; }
+  .chart-cap::after { content: ' График листается вбок.'; color: var(--clay); }
   .proofbar-inner { grid-template-columns: 1fr; gap: 14px; padding: 24px; }
   .allocation { padding: 26px 24px; }
   .fails { gap: 1px; }
   .principles { gap: 26px; }
   .phase { grid-template-columns: 1fr; gap: 10px; }
-  .case { grid-template-columns: 1fr; gap: 20px; padding: 26px 24px; }
+  .case, .case.no-photo { grid-template-columns: 1fr; gap: 20px; padding: 24px 20px; }
   .case-figure { border-right: none; border-bottom: 1px solid var(--line); padding-right: 0; padding-bottom: 18px; display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
   .case-big { margin-bottom: 0; }
+  .case-photos { max-width: 340px; margin: 0 auto; }
+  .arc-step { grid-template-columns: 1fr; gap: 5px; }
   .author-inner { grid-template-columns: 1fr; }
   .author-photo { max-width: 240px; }
   .notfor, .format { padding: 30px 26px; }
@@ -415,9 +478,9 @@ a { color: inherit; }
 <!-- ПОЛОСА РЕЗУЛЬТАТОВ -->
 <div class="proofbar">
   <div class="proofbar-inner">
+    <div class="proof-item"><span class="proof-n">93 → 71 кг</span><span class="proof-t">за год,<br>талия 90 → 78 см</span></div>
+    <div class="proof-item"><span class="proof-n">жир −2,8 кг</span><span class="proof-t">и мышцы +0,6 кг одновременно,<br>замер на аппарате</span></div>
     <div class="proof-item"><span class="proof-n">−9 кг</span><span class="proof-t">за 4 месяца,<br>с жёсткими ограничениями в еде</span></div>
-    <div class="proof-item"><span class="proof-n">93 → 71</span><span class="proof-t">за год,<br>без единого отката</span></div>
-    <div class="proof-item"><span class="proof-n">−3,4 кг</span><span class="proof-t">жира при сохранённых мышцах,<br>замер на аппарате</span></div>
     <a href="#rezultaty">Разобрать эти случаи ↓</a>
   </div>
 </div>
@@ -556,6 +619,50 @@ a { color: inherit; }
       </div>
     </div>
     <p class="week-note"><strong>И в любой день:</strong> вы просто пишете в Telegram, когда возник вопрос, — а не ждёте созвона по расписанию. Это главное отличие от того, как работает большинство: там вы остаётесь один на один с планом на шесть дней из семи.</p>
+
+    <div class="proofs-block">
+    <h3 class="proofs-title">Четыре настоящих фрагмента из одной работы</h3>
+    <p class="proofs-sub">Публикуются с разрешения подопечной. Ничего не переписано и не приглажено — как было в чате, так и стоит.</p>
+    <div class="proofs">
+
+      <figure class="proofcard">
+        <figcaption>
+          <p class="pc-when">6 декабря · 10:22</p>
+          <p class="pc-lead">Приехали подруги, план — итальянский ресторан. Вопрос задан в 10:22, решение получено в 10:27.</p>
+        </figcaption>
+        <a href="chat-restoran.jpg" target="_blank" rel="noopener"><img src="chat-restoran.jpg" alt="Переписка: как быть с рестораном" loading="lazy"></a>
+        <p class="pc-note">Ни одного «нельзя». Просто поменяли местами завтрак и ужин — и вечер прошёл как задумано.</p>
+      </figure>
+
+      <figure class="proofcard">
+        <figcaption>
+          <p class="pc-when">26 января · 11:53</p>
+          <p class="pc-lead">Она пропустила тренировку и хочет поставить две подряд, чтобы догнать план.</p>
+        </figcaption>
+        <a href="chat-otdyh.jpg" target="_blank" rel="noopener"><img src="chat-otdyh.jpg" alt="Переписка: про день отдыха" loading="lazy"></a>
+        <p class="pc-note">Ответ — «между ними стоит сделать день отдыха». Иногда моя работа в том, чтобы притормозить человека, а не подогнать.</p>
+      </figure>
+
+      <figure class="proofcard">
+        <figcaption>
+          <p class="pc-when">16 декабря · 11:59</p>
+          <p class="pc-lead">Прислала видео подхода из зала. Я разбираю его прямо поверх кадра.</p>
+        </figcaption>
+        <a href="chat-tehnika.jpg" target="_blank" rel="noopener"><img src="chat-tehnika.jpg" alt="Разбор техники поверх видео" loading="lazy"></a>
+        <p class="pc-note">Вот так выглядит «разбор техники удалённо» на практике: стрелки поверх её же видео и объяснение, что и в какой момент включать.</p>
+      </figure>
+
+      <figure class="proofcard">
+        <figcaption>
+          <p class="pc-when">10 апреля · 10:36</p>
+          <p class="pc-lead">Шестая неделя снижения жира. Вопрос про творожную пасху на праздник.</p>
+        </figcaption>
+        <a href="chat-pasha.jpg" target="_blank" rel="noopener"><img src="chat-pasha.jpg" alt="Переписка: праздничный стол на этапе снижения" loading="lazy"></a>
+        <p class="pc-note">«Сделай конечно, сам кулич поем». И её же слова тремя строками ниже: «мне всё ок, не голодно, чувствую себя тоже хорошо» — это шестая неделя сушки.</p>
+      </figure>
+
+    </div>
+    </div>
   </section>
 
   <!-- КЕЙСЫ -->
@@ -568,8 +675,159 @@ a { color: inherit; }
 
     <div class="cases">
 
-      <!-- КЕЙС 1 -->
+      <!-- КЕЙС 1 — женщина 40, воспитатель, 93 → 71 кг за 12 месяцев -->
       <article class="case">
+        <div class="case-photos">
+          <figure>
+            <a href="case1-do.jpg" target="_blank" rel="noopener"><img src="case1-do.jpg" alt="До начала работы" loading="lazy"></a>
+            <figcaption>До</figcaption>
+          </figure>
+          <figure>
+            <a href="case1-posle.jpg" target="_blank" rel="noopener"><img src="case1-posle.jpg" alt="Через 12 месяцев" loading="lazy"></a>
+            <figcaption><b>Через 12 месяцев</b></figcaption>
+          </figure>
+        </div>
+        <div>
+          <p class="case-tag">Александра, 40 лет · воспитатель детского сада</p>
+          <h3>«Диеты не работали, а когда вес вставал — я просто ела ещё меньше»</h3>
+          <p>Смены, чужие дети весь день, дома свои. До меня — диеты из интернета и детоксы: работали, пока вес шёл, а как только он останавливался, она делала единственное, что приходило в голову, — резала питание ещё сильнее. И снижение прекращалось совсем.</p>
+          <p>Тренировки мы начали только через полгода: сначала не было ни времени, ни сил. Первые месяцы работали с одним питанием — считали БЖУ, обычная еда, ничего экзотического. Когда вес останавливался, я не усиливал дефицит, а наоборот давал организму передышку — и снижение возобновлялось. Банкеты и командировки были, под каждую заранее меняли рацион.</p>
+          <div class="metrics">
+            <div class="metric key"><span class="metric-name">Вес</span><span class="metric-val">93 <i>→</i> <b>71 кг</b></span></div>
+            <div class="metric"><span class="metric-name">Талия</span><span class="metric-val">90 <i>→</i> 78 см</span></div>
+            <div class="metric"><span class="metric-name">Бёдра</span><span class="metric-val">120 <i>→</i> 100 см</span></div>
+            <div class="metric"><span class="metric-name">Рука</span><span class="metric-val">37 <i>→</i> 29 см</span></div>
+            <div class="metric"><span class="metric-name">Срок работы</span><span class="metric-val">12 месяцев</span></div>
+          </div>
+          <p style="margin-top:14px">Гардероб пришлось менять целиком, на несколько размеров. Ушла тяга к сладкому и импульсивное переедание — не усилием воли, а вместе с нормальным режимом питания. Давление вернулось в норму, пульс в покое снизился, изменились лицо и кожа.</p>
+          <p class="case-quote">«Я, конечно, стала хоть футболки в штаны заправлять. А то я всё живот закрывала. Спасибо тебе, да, я поувереннее стала себя чувствовать».</p>
+        </div>
+      </article>
+
+      <!-- КЕЙС 2 — организатор мероприятий, 63 → 57 кг, InBody -->
+      <article class="case">
+        <div class="case-photos">
+          <figure>
+            <a href="case2-do.jpg" target="_blank" rel="noopener"><img src="case2-do.jpg" alt="До начала работы" loading="lazy"></a>
+            <figcaption>До</figcaption>
+          </figure>
+          <figure>
+            <a href="case2-posle.jpg" target="_blank" rel="noopener"><img src="case2-posle.jpg" alt="После" loading="lazy"></a>
+            <figcaption><b>После</b></figcaption>
+          </figure>
+        </div>
+        <div>
+          <p class="case-tag">Анна · организатор мероприятий, командировки</p>
+          <h3>Восемь месяцев работы. Снижать жир мы начали на шестом</h3>
+          <p>До меня: три месяца с другим тренером без единого изменения, потом самостоятельная диета — вес ушёл, а жир остался на месте. Плюс травма колена, ненормированный день и постоянные разъезды.</p>
+          <p>Это главное, что стоит понять про мою работу: <strong>снижение жира — это не вся работа, а один её этап</strong>. Если начать с него сразу, получится ровно то, что уже было: вес уходит, форма нет.</p>
+          <div class="arc">
+            <div class="arc-step">
+              <p class="arc-when">Октябрь — ноябрь</p>
+              <p class="arc-what"><b>Втягивание.</b> Ставим технику под травмированное колено и поднимаем питание. Вес за два месяца вырос на два килограмма — так и было задумано.</p>
+            </div>
+            <div class="arc-step">
+              <p class="arc-when">Декабрь — февраль</p>
+              <p class="arc-what"><b>Разгон обмена.</b> Строим мышцы и раскручиваем обмен. Вес идёт вниз сам, без дефицита и без единой голодной недели.</p>
+            </div>
+            <div class="arc-step">
+              <p class="arc-when">Март — май</p>
+              <p class="arc-what"><b>Снижение жира.</b> Только здесь начинаем убирать жир целенаправленно. Мышцы, набранные зимой, остаются на месте.</p>
+            </div>
+          </div>
+          <p>Тренировки всё это время — 3–4 раза в неделю по 30–35 минут. Питание считали и перестраивали под командировки: в поездке мы его не бросали, а меняли под то, что реально доступно.</p>
+          <p>Отсюда и цифры, которых обычно не бывает вместе: <strong>жир вниз, мышцы вверх — одновременно</strong>. Ради этого и нужны восемь месяцев вместо трёх.</p>
+          <p>Обратите внимание на первые два месяца графика. Человек, который пришёл худеть, два месяца видел, как вес растёт, — и продолжал работать, потому что понимал, зачем. Это и есть разница между планом и ведением.</p>
+          <div class="metrics">
+            <div class="metric key"><span class="metric-name">Жировая масса <span style="color:var(--text-3)">(аппарат)</span></span><span class="metric-val">15,2 <i>→</i> <b>12,4 кг</b></span></div>
+            <div class="metric key"><span class="metric-name">Скелетные мышцы</span><span class="metric-val">25,6 <i>→</i> <b>26,2 кг</b></span></div>
+            <div class="metric"><span class="metric-name">Процент жира</span><span class="metric-val">24,8 <i>→</i> 20,7 %</span></div>
+            <div class="metric"><span class="metric-name">Вес</span><span class="metric-val">61,2 <i>→</i> 57,3 кг</span></div>
+          </div>
+          <p style="margin-top:14px;font-size:14px;color:var(--text-3)">Состав тела — два замера на одном аппарате: август 2025, до старта, и апрель 2026. Вес — 61,2 кг на первый день работы, 1 октября 2025, и 57,3 кг в конце мая 2026, на финише этапа снижения.</p>
+          <p class="case-quote">«Подтянутое тело с мышцами, без отёков, а самое главное — энергия, силы, отличное самочувствие. Любая вещь теперь сидит хорошо, все фотографии получаются, и ракурс можно не выбирать».</p>
+        </div>
+        <div class="case-full">
+          <p class="case-full-title">Вес по неделям: октябрь — май</p>
+          <div class="chart-wrap">
+<svg class="chart" viewBox="0 0 820 300" role="img" aria-label="Вес Анны по неделям с октября по май">
+<title>Вес по неделям: октябрь — май</title>
+<rect x="38.0" y="20" width="190.2" height="226" fill="#F0EBE1"/>
+<text x="133.1" y="14" text-anchor="middle" class="ch-band">Втягивание</text>
+<rect x="228.2" y="20" width="290.8" height="226" fill="rgba(74,90,72,.10)"/>
+<text x="373.5" y="14" text-anchor="middle" class="ch-band">Разгон обмена</text>
+<rect x="518.9" y="20" width="287.1" height="226" fill="rgba(168,90,56,.10)"/>
+<text x="662.5" y="14" text-anchor="middle" class="ch-band">Снижение жира</text>
+<line x1="38" x2="806" y1="208.6" y2="208.6" class="ch-grid"/>
+<text x="32" y="212.6" text-anchor="end" class="ch-ax">58</text>
+<line x1="38" x2="806" y1="146.2" y2="146.2" class="ch-grid"/>
+<text x="32" y="150.2" text-anchor="end" class="ch-ax">60</text>
+<line x1="38" x2="806" y1="83.9" y2="83.9" class="ch-grid"/>
+<text x="32" y="87.9" text-anchor="end" class="ch-ax">62</text>
+<path class="ch-line" d="M 44.0 120.7 L 63.4 120.4 L 82.8 110.4 L 102.2 127.5 L 121.5 102.6 L 140.9 111.3 L 160.3 129.1 L 179.7 99.5 L 199.1 79.2 L 218.5 52.7 L 237.8 58.0 L 257.2 98.5 L 276.6 68.3 L 296.0 83.3 L 315.4 62.1 L 334.8 108.8 L 354.2 122.9 L 373.5 127.5 L 392.9 104.5 L 412.3 125.3 L 431.7 114.4 L 451.1 129.7 L 470.5 136.9 L 489.8 144.7 L 528.6 140.0 L 548.0 161.8 L 567.4 161.8 L 586.8 163.1 L 606.2 169.6 L 625.5 160.3 L 644.9 179.9 L 664.3 179.9 L 683.7 195.5 L 703.1 177.4 L 722.5 189.9 L 741.8 205.5 L 761.2 216.4 L 780.6 208.0 L 800.0 230.4"/>
+<circle cx="44.0" cy="120.7" r="5" class="ch-dot"/>
+<text x="44.0" y="106.7" text-anchor="start" class="ch-val">60,8</text>
+<circle cx="218.5" cy="52.7" r="5" class="ch-dot"/>
+<text x="218.5" y="38.7" text-anchor="middle" class="ch-val">63,0</text>
+<circle cx="800.0" cy="230.4" r="5" class="ch-dot"/>
+<text x="802.0" y="206.0" text-anchor="end" class="ch-val">57,3</text>
+<text x="82.8" y="268" text-anchor="middle" class="ch-ax">окт</text>
+<text x="179.7" y="268" text-anchor="middle" class="ch-ax">ноя</text>
+<text x="276.6" y="268" text-anchor="middle" class="ch-ax">дек</text>
+<text x="373.5" y="268" text-anchor="middle" class="ch-ax">янв</text>
+<text x="470.5" y="268" text-anchor="middle" class="ch-ax">фев</text>
+<text x="567.4" y="268" text-anchor="middle" class="ch-ax">мар</text>
+<text x="664.3" y="268" text-anchor="middle" class="ch-ax">апр</text>
+<text x="761.2" y="268" text-anchor="middle" class="ch-ax">май</text>
+<rect class="ch-hit" x="35.0" y="20" width="18" height="226" fill="transparent" data-v="60,82" data-x="44.0" data-y="120.7" data-m="окт" data-w="1"></rect>
+<rect class="ch-hit" x="54.4" y="20" width="18" height="226" fill="transparent" data-v="60,83" data-x="63.4" data-y="120.4" data-m="окт" data-w="2"></rect>
+<rect class="ch-hit" x="73.8" y="20" width="18" height="226" fill="transparent" data-v="61,15" data-x="82.8" data-y="110.4" data-m="окт" data-w="3"></rect>
+<rect class="ch-hit" x="93.2" y="20" width="18" height="226" fill="transparent" data-v="60,6" data-x="102.2" data-y="127.5" data-m="окт" data-w="4"></rect>
+<rect class="ch-hit" x="112.5" y="20" width="18" height="226" fill="transparent" data-v="61,4" data-x="121.5" data-y="102.6" data-m="окт" data-w="5"></rect>
+<rect class="ch-hit" x="131.9" y="20" width="18" height="226" fill="transparent" data-v="61,12" data-x="140.9" data-y="111.3" data-m="ноя" data-w="1"></rect>
+<rect class="ch-hit" x="151.3" y="20" width="18" height="226" fill="transparent" data-v="60,55" data-x="160.3" data-y="129.1" data-m="ноя" data-w="2"></rect>
+<rect class="ch-hit" x="170.7" y="20" width="18" height="226" fill="transparent" data-v="61,5" data-x="179.7" data-y="99.5" data-m="ноя" data-w="3"></rect>
+<rect class="ch-hit" x="190.1" y="20" width="18" height="226" fill="transparent" data-v="62,15" data-x="199.1" data-y="79.2" data-m="ноя" data-w="4"></rect>
+<rect class="ch-hit" x="209.5" y="20" width="18" height="226" fill="transparent" data-v="63,0" data-x="218.5" data-y="52.7" data-m="ноя" data-w="5"></rect>
+<rect class="ch-hit" x="228.8" y="20" width="18" height="226" fill="transparent" data-v="62,83" data-x="237.8" data-y="58.0" data-m="дек" data-w="1"></rect>
+<rect class="ch-hit" x="248.2" y="20" width="18" height="226" fill="transparent" data-v="61,53" data-x="257.2" data-y="98.5" data-m="дек" data-w="2"></rect>
+<rect class="ch-hit" x="267.6" y="20" width="18" height="226" fill="transparent" data-v="62,5" data-x="276.6" data-y="68.3" data-m="дек" data-w="3"></rect>
+<rect class="ch-hit" x="287.0" y="20" width="18" height="226" fill="transparent" data-v="62,02" data-x="296.0" data-y="83.3" data-m="дек" data-w="4"></rect>
+<rect class="ch-hit" x="306.4" y="20" width="18" height="226" fill="transparent" data-v="62,7" data-x="315.4" data-y="62.1" data-m="дек" data-w="5"></rect>
+<rect class="ch-hit" x="325.8" y="20" width="18" height="226" fill="transparent" data-v="61,2" data-x="334.8" data-y="108.8" data-m="янв" data-w="1"></rect>
+<rect class="ch-hit" x="345.2" y="20" width="18" height="226" fill="transparent" data-v="60,75" data-x="354.2" data-y="122.9" data-m="янв" data-w="2"></rect>
+<rect class="ch-hit" x="364.5" y="20" width="18" height="226" fill="transparent" data-v="60,6" data-x="373.5" data-y="127.5" data-m="янв" data-w="3"></rect>
+<rect class="ch-hit" x="383.9" y="20" width="18" height="226" fill="transparent" data-v="61,34" data-x="392.9" data-y="104.5" data-m="янв" data-w="4"></rect>
+<rect class="ch-hit" x="403.3" y="20" width="18" height="226" fill="transparent" data-v="60,67" data-x="412.3" data-y="125.3" data-m="янв" data-w="5"></rect>
+<rect class="ch-hit" x="422.7" y="20" width="18" height="226" fill="transparent" data-v="61,02" data-x="431.7" data-y="114.4" data-m="фев" data-w="1"></rect>
+<rect class="ch-hit" x="442.1" y="20" width="18" height="226" fill="transparent" data-v="60,53" data-x="451.1" data-y="129.7" data-m="фев" data-w="2"></rect>
+<rect class="ch-hit" x="461.5" y="20" width="18" height="226" fill="transparent" data-v="60,3" data-x="470.5" data-y="136.9" data-m="фев" data-w="3"></rect>
+<rect class="ch-hit" x="480.8" y="20" width="18" height="226" fill="transparent" data-v="60,05" data-x="489.8" data-y="144.7" data-m="фев" data-w="4"></rect>
+<rect class="ch-hit" x="519.6" y="20" width="18" height="226" fill="transparent" data-v="60,2" data-x="528.6" data-y="140.0" data-m="мар" data-w="1"></rect>
+<rect class="ch-hit" x="539.0" y="20" width="18" height="226" fill="transparent" data-v="59,5" data-x="548.0" data-y="161.8" data-m="мар" data-w="2"></rect>
+<rect class="ch-hit" x="558.4" y="20" width="18" height="226" fill="transparent" data-v="59,5" data-x="567.4" data-y="161.8" data-m="мар" data-w="3"></rect>
+<rect class="ch-hit" x="577.8" y="20" width="18" height="226" fill="transparent" data-v="59,46" data-x="586.8" data-y="163.1" data-m="мар" data-w="4"></rect>
+<rect class="ch-hit" x="597.2" y="20" width="18" height="226" fill="transparent" data-v="59,25" data-x="606.2" data-y="169.6" data-m="мар" data-w="5"></rect>
+<rect class="ch-hit" x="616.5" y="20" width="18" height="226" fill="transparent" data-v="59,55" data-x="625.5" data-y="160.3" data-m="апр" data-w="1"></rect>
+<rect class="ch-hit" x="635.9" y="20" width="18" height="226" fill="transparent" data-v="58,92" data-x="644.9" data-y="179.9" data-m="апр" data-w="2"></rect>
+<rect class="ch-hit" x="655.3" y="20" width="18" height="226" fill="transparent" data-v="58,92" data-x="664.3" data-y="179.9" data-m="апр" data-w="3"></rect>
+<rect class="ch-hit" x="674.7" y="20" width="18" height="226" fill="transparent" data-v="58,42" data-x="683.7" data-y="195.5" data-m="апр" data-w="4"></rect>
+<rect class="ch-hit" x="694.1" y="20" width="18" height="226" fill="transparent" data-v="59,0" data-x="703.1" data-y="177.4" data-m="апр" data-w="5"></rect>
+<rect class="ch-hit" x="713.5" y="20" width="18" height="226" fill="transparent" data-v="58,6" data-x="722.5" data-y="189.9" data-m="май" data-w="1"></rect>
+<rect class="ch-hit" x="732.8" y="20" width="18" height="226" fill="transparent" data-v="58,1" data-x="741.8" data-y="205.5" data-m="май" data-w="2"></rect>
+<rect class="ch-hit" x="752.2" y="20" width="18" height="226" fill="transparent" data-v="57,75" data-x="761.2" data-y="216.4" data-m="май" data-w="3"></rect>
+<rect class="ch-hit" x="771.6" y="20" width="18" height="226" fill="transparent" data-v="58,02" data-x="780.6" data-y="208.0" data-m="май" data-w="4"></rect>
+<rect class="ch-hit" x="791.0" y="20" width="18" height="226" fill="transparent" data-v="57,3" data-x="800.0" data-y="230.4" data-m="май" data-w="5"></rect>
+<circle class="ch-hover" cx="-99" cy="-99" r="6"/>
+</svg>
+            <div class="ch-tip" id="chTip"></div>
+          </div>
+          <p class="chart-cap">Средний вес по неделям, из её таблицы. Каждая точка — среднее за неделю, а не удачное утро.</p>
+        </div>
+      </article>
+
+      <!-- КЕЙС 3 — фактура ещё собирается -->
+      <article class="case no-photo">
         <div class="case-figure">
           <div class="case-big">−9 кг</div>
           <p class="case-who">Мужчина, 4 месяца<br>жёсткие ограничения в питании</p>
@@ -577,42 +835,13 @@ a { color: inherit; }
         <div>
           <h3>«Мне нельзя половину продуктов из обычных диет»</h3>
           <p>Не ест мясо — по убеждениям, не по моде, и менять это не собирался. Обычный ответ индустрии в такой ситуации: «тогда результата не ждите». Мы собрали питание внутри его ограничений, без единого исключения из принципов.</p>
-          <p>Из девяти килограммов шесть — именно жир: мышцы остались на месте. Это важно, потому что потерянные мышцы — это как раз тот случай, когда вес вернётся, а форма нет.</p>
-          <!-- МЕСТО ДЛЯ ЦИТАТЫ КЛИЕНТА: раскомментируйте и вставьте текст
-          <p class="case-quote">«Сюда — фраза клиента своими словами».</p>
-          -->
-        </div>
-      </article>
-
-      <!-- КЕЙС 2 -->
-      <article class="case">
-        <div class="case-figure">
-          <div class="case-big">93 → 71 кг</div>
-          <p class="case-who">Женщина, 1 год<br>без единого отката</p>
-        </div>
-        <div>
-          <h3>Двадцать два килограмма за год — и ни одного возврата назад</h3>
-          <p>Скорость сознательно спокойная: около двух килограммов в месяц. Быстрее можно, но тогда уходит мышечная масса, портится самочувствие и почти гарантирован откат — а мы шли не «к лету», а насовсем.</p>
-          <p>За год не было ни одной недели голода и ни одного запрета «навсегда». Были дни рождения, отпуск и болезни — на каждую такую ситуацию заранее было решение.</p>
-        </div>
-      </article>
-
-      <!-- КЕЙС 3 -->
-      <article class="case">
-        <div class="case-figure">
-          <div class="case-big">−3,4 кг жира</div>
-          <p class="case-who">Женщина, 63 → 59 кг<br>измерено на аппарате</p>
-        </div>
-        <div>
-          <h3>Весы показали минус четыре. Изменилось при этом гораздо больше</h3>
-          <p>Тот случай, который лучше всего объясняет, почему весы врут. Ушло чуть больше трёх килограммов жира, мышцы сохранились полностью — поэтому в одежде и в зеркале разница оказалась заметно больше, чем «минус четыре килограмма».</p>
-          <p>Замер на аппарате показал самый низкий процент жира за всю её жизнь. Это к вопросу о том, поздно ли начинать после сорока.</p>
+          <p>Из девяти килограммов шесть — именно жир: мышцы остались на месте. Это важно, потому что потерянные мышцы — как раз тот случай, когда вес вернётся, а форма нет.</p>
         </div>
       </article>
 
     </div>
 
-    <p class="cases-note">Фото «до/после» и отзывы подопечных публикую только с письменного согласия — часть людей просит этого не делать, и это нормально для такого формата работы. На разборе показываю графики замеров и переписки целиком.</p>
+    <p class="cases-note">Фото и цитаты публикую только с письменного разрешения самих подопечных. Замеры, снимки с аппарата и переписку по каждому случаю показываю целиком на разборе — там же видно даты и промежуточные точки, а не только начало и конец.</p>
   </section>
 
   <!-- ЧТО ВХОДИТ -->
@@ -891,6 +1120,31 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
 } else {
   document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
 }
+
+/* Подсказка на графике веса */
+(function(){
+  const svg = document.querySelector('.chart');
+  const tip = document.getElementById('chTip');
+  if (!svg || !tip) return;
+  const dot = svg.querySelector('.ch-hover');
+  const wrap = svg.parentElement;
+  svg.querySelectorAll('.ch-hit').forEach(hit => {
+    const show = () => {
+      const x = parseFloat(hit.dataset.x), y = parseFloat(hit.dataset.y);
+      dot.setAttribute('cx', x); dot.setAttribute('cy', y); dot.style.opacity = 1;
+      const box = svg.getBoundingClientRect(), vb = svg.viewBox.baseVal;
+      tip.style.left = (x / vb.width * box.width) + 'px';
+      tip.style.top  = (y / vb.height * box.height) + 'px';
+      tip.textContent = hit.dataset.v + ' кг · ' + hit.dataset.m + ', неделя ' + hit.dataset.w;
+      tip.style.opacity = 1;
+    };
+    const hide = () => { dot.style.opacity = 0; tip.style.opacity = 0; };
+    hit.addEventListener('mouseenter', show);
+    hit.addEventListener('touchstart', show, {passive:true});
+    hit.addEventListener('mouseleave', hide);
+  });
+  wrap.addEventListener('mouseleave', () => { dot.style.opacity = 0; tip.style.opacity = 0; });
+})();
 
 /* В FAQ открыт только один вопрос за раз */
 const faqItems = document.querySelectorAll('.faq details');
