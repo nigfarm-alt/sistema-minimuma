@@ -192,7 +192,7 @@ section[id] { scroll-margin-top: 74px; }
 .ccard:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(18,18,18,.08); }
 .cc-pain { font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 16px; }
 .cc-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 16px; }
-.cc-photos img { width: 100%; aspect-ratio: 1/1.55; object-fit: cover; border-radius: 3px; display: block; }
+.cc-photos img { width: 100%; aspect-ratio: 700/1243; object-fit: cover; border-radius: 3px; display: block; }
 .cc-name { font-size: 12.5px; color: var(--text-3); margin-bottom: 6px; }
 .cc-head { font-family: 'Literata', serif; font-size: 18px; line-height: 1.32; color: var(--text); margin-bottom: 14px; }
 .cc-metrics { display: flex; flex-direction: column; gap: 2px; padding-top: 14px; border-top: 1px solid var(--line); margin-top: auto; }
@@ -212,9 +212,9 @@ section[id] { scroll-margin-top: 74px; }
 .cmodal p { font-size: 16.5px; color: var(--text-2); line-height: 1.7; margin-bottom: 14px; }
 .cmodal strong { color: var(--text); font-weight: 500; }
 .case-tag { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 10px !important; }
-.cm-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0 auto 24px; max-width: 420px; }
+.cm-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0 auto 24px; max-width: 460px; }
 .cm-photos figure { margin: 0; }
-.cm-photos img { width: 100%; aspect-ratio: 1/1.6; object-fit: cover; border-radius: 3px; display: block; }
+.cm-photos img { width: 100%; aspect-ratio: 700/1243; object-fit: cover; border-radius: 3px; display: block; }
 .cm-photos figcaption { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-3); margin-top: 8px; text-align: center; }
 .cm-photos figcaption b { color: var(--accent); font-weight: 700; }
 .cm-sub { font-family: 'Literata', serif; font-size: 18px; color: var(--text) !important; margin: 30px 0 12px !important; padding-top: 24px; border-top: 1px solid var(--line); }
@@ -442,8 +442,8 @@ section[id] { scroll-margin-top: 74px; }
 
 /* ---------- ПРАВКИ ---------- */
 .eyebrow.big { font-size: 13px; letter-spacing: .12em; }
-.cc-photos img { aspect-ratio: 1/1.92; }
-.cm-photos img { aspect-ratio: 1/1.92; }
+.cc-photos img { aspect-ratio: 700/1243; }
+.cm-photos img { aspect-ratio: 700/1243; }
 .concept-grid { grid-template-columns: 1fr 1fr; }
 .tiers.two { grid-template-columns: 1fr 1fr; }
 .tier li { display: grid; grid-template-columns: 14px 1fr; gap: 12px; align-items: start; }
