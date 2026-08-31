@@ -456,3 +456,11 @@ section[id] { scroll-margin-top: 74px; }
 .pull.big { padding: 34px 38px; border-left-width: 4px; }
 .pull.big p { font-size: 24px; line-height: 1.45; }
 @media (max-width: 860px) { .pull.big { padding: 24px 22px; } .pull.big p { font-size: 19px; } }
+
+/* ---------- ПЕРВАЯ НЕДЕЛЯ ---------- */
+.onboard { background: var(--bg-2); border-radius: var(--radius); padding: 36px 38px 34px; margin-bottom: 44px; }
+.onboard h3 { font-size: 26px; margin-bottom: 12px; max-width: 24ch; }
+.onboard-lead { font-size: 17px; color: var(--text-2); line-height: 1.65; margin-bottom: 26px; max-width: 58ch; }
+.onboard .steps { max-width: 72ch; }
+.onboard-after { margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--line); font-family: 'Literata', serif; font-size: 19px; color: var(--text); line-height: 1.5; }
+@media (max-width: 860px) { .onboard { padding: 26px 22px; } .onboard h3 { font-size: 21px; } }
