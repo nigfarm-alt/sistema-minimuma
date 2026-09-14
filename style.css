@@ -89,7 +89,7 @@ section[id] { scroll-margin-top: 74px; }
 .stat-num { font-family: 'Literata', serif; font-size: 23px; color: var(--on-ink); display: block; line-height: 1.2; }
 .stat-label { font-size: 11.5px; color: #7E7873; }
 .stat-label a { color: var(--accent-on-d); text-underline-offset: 3px; }
-.hero-photo { position: relative; background: #1B1B1B; }
+.hero-photo { position: relative; background: var(--ink); line-height: 0; }
 .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; display: block; }
 .hero-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, var(--ink) 0%, transparent 32%); pointer-events: none; }
 
@@ -390,7 +390,7 @@ section[id] { scroll-margin-top: 74px; }
   .bleed { width: 100%; margin-left: 0; transform: none; }
   .hero-inner { grid-template-columns: 1fr; }
   .hero-text { padding: 46px 24px 44px; order: 2; }
-  .hero-photo { order: 1; aspect-ratio: 4/3; }
+  .hero-photo { order: 1; aspect-ratio: 4/3; margin-bottom: -1px; }
   .hero-photo img { object-position: 50% 16%; }
   .hero-photo::after { background: linear-gradient(180deg, transparent 55%, var(--ink) 100%); }
   .hero-actions .btn { width: 100%; }
@@ -409,7 +409,7 @@ section[id] { scroll-margin-top: 74px; }
   .chart-wrap { overflow-x: auto; }
   .chart { min-width: 640px; }
   .author-inner { grid-template-columns: 1fr; }
-  .author-photo { max-width: 240px; }
+  .author-photo { max-width: 250px; margin-inline: auto; }
   .consult { padding: 28px 24px; }
   .faq summary { font-size: 17.5px; padding-right: 38px; }
   .faq .answer { padding-right: 8px; }
@@ -444,7 +444,6 @@ section[id] { scroll-margin-top: 74px; }
 .eyebrow.big { font-size: 13px; letter-spacing: .12em; }
 .cc-photos img { aspect-ratio: 700/1243; }
 .cm-photos img { aspect-ratio: 700/1243; }
-.concept-grid { grid-template-columns: 1fr 1fr; }
 .tiers.two { grid-template-columns: 1fr 1fr; }
 .tier li { display: grid; grid-template-columns: 14px 1fr; gap: 12px; align-items: start; }
 .tier li::before { content: '—'; }
@@ -464,3 +463,32 @@ section[id] { scroll-margin-top: 74px; }
 .onboard .steps { max-width: 72ch; }
 .onboard-after { margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--line); font-family: 'Literata', serif; font-size: 19px; color: var(--text); line-height: 1.5; }
 @media (max-width: 860px) { .onboard { padding: 26px 22px; } .onboard h3 { font-size: 21px; } }
+
+/* CTA в конце разбора кейса */
+.cm-cta { margin-top: 34px; padding-top: 28px; border-top: 1px solid var(--line); text-align: center; }
+.cm-cta p { font-family: 'Literata', serif; font-size: 19px; color: var(--text) !important; line-height: 1.5; margin: 0 auto 20px !important; max-width: 34ch; }
+@media (max-width: 860px) { .cm-cta .btn { width: 100%; } }
+
+/* ---------- КАРТОЧКА КЕЙСА БЕЗ ФОТО ---------- */
+.cc-nophoto {
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  aspect-ratio: 1400/1243; margin-bottom: 16px; padding: 20px;
+  background: var(--ink); border-radius: 3px; text-align: center;
+  min-width: 0; overflow: hidden;
+}
+.cc-nophoto b { font-family: 'Literata', serif; font-weight: 500; font-size: 40px; color: var(--on-ink); line-height: 1.05; white-space: nowrap; }
+.cc-nophoto b i { font-style: normal; color: var(--accent-on-d); margin: 0 4px; }
+.cc-nophoto em { font-style: normal; font-size: 13px; color: var(--on-ink-2); margin-top: 10px; }
+.cc-nophoto u { text-decoration: none; font-size: 11.5px; line-height: 1.5; color: #6E6862; margin-top: 22px; max-width: 26ch; }
+
+/* ---------- ПОЛОСА «ГЕОГРАФИЯ И ВЕС» ---------- */
+.cases-now { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 18px; border-top: 1px solid var(--line); }
+.cases-now > div { padding: 20px 24px 18px; }
+.cases-now > div + div { border-left: 1px solid var(--line); }
+.cases-now b { display: block; font-family: 'Literata', serif; font-weight: 500; font-size: 20px; color: var(--text); }
+.cases-now span { display: block; margin-top: 4px; font-size: 14.5px; color: var(--text-3); line-height: 1.5; }
+@media (max-width: 640px) {
+  .cases-now { grid-template-columns: 1fr; }
+  .cases-now > div + div { border-left: 0; border-top: 1px solid var(--line); }
+  .cases-now > div { padding-inline: 0; }
+}
