@@ -95,7 +95,8 @@ section[id] { scroll-margin-top: 74px; }
 
 /* ---------- ПОЛОСА РЕЗУЛЬТАТОВ ---------- */
 .proofbar { background: var(--bg-2); border-bottom: 1px solid var(--line); }
-.proofbar-inner { max-width: 1180px; margin: 0 auto; padding: 26px 24px; display: grid; grid-template-columns: repeat(3, 1fr) auto; gap: 28px; align-items: center; }
+.proofbar-inner { max-width: 1180px; margin: 0 auto; padding: 26px 24px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px 26px; align-items: center; }
+.proofbar-inner > a { grid-column: 1 / -1; justify-self: end; }
 .proof-item { border-left: 2px solid var(--accent); padding-left: 16px; }
 .proof-n { display: block; font-family: 'Literata', serif; font-size: 25px; color: var(--text); line-height: 1.15; white-space: nowrap; }
 .proof-t { font-size: 13.5px; color: var(--text-2); line-height: 1.45; }
@@ -395,7 +396,7 @@ section[id] { scroll-margin-top: 74px; }
   .hero-photo::after { background: linear-gradient(180deg, transparent 55%, var(--ink) 100%); }
   .hero-actions .btn { width: 100%; }
   .hero-stats { gap: 20px 28px; }
-  .proofbar-inner { grid-template-columns: 1fr; gap: 14px; padding: 22px 24px; }
+  .proofbar-inner { grid-template-columns: 1fr 1fr; gap: 16px; padding: 22px 24px; }
   .signs, .fails, .concept-grid, .tiers, .consult, .notfor, .channels-grid, .why-list { grid-template-columns: 1fr; }
   .why { padding: 58px 0; }
   .why-list { gap: 20px; }
@@ -492,3 +493,7 @@ section[id] { scroll-margin-top: 74px; }
   .cases-now > div + div { border-left: 0; border-top: 1px solid var(--line); }
   .cases-now > div { padding-inline: 0; }
 }
+
+/* ---------- ПРИМЕЧАНИЕ ПОД ЭТАПАМИ ---------- */
+.phases-note { margin-top: 26px; padding: 18px 22px; background: var(--bg-2); border-left: 3px solid var(--accent); font-size: 15.5px; line-height: 1.65; color: var(--text-2); border-radius: var(--radius); }
+.phases-note strong { color: var(--text); font-weight: 500; }
