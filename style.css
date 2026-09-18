@@ -497,3 +497,27 @@ section[id] { scroll-margin-top: 74px; }
 /* ---------- ПРИМЕЧАНИЕ ПОД ЭТАПАМИ ---------- */
 .phases-note { margin-top: 26px; padding: 18px 22px; background: var(--bg-2); border-left: 3px solid var(--accent); font-size: 15.5px; line-height: 1.65; color: var(--text-2); border-radius: var(--radius); }
 .phases-note strong { color: var(--text); font-weight: 500; }
+
+/* ---------- ЮРИДИЧЕСКИЕ СТРАНИЦЫ ---------- */
+.doc { max-width: 780px; margin: 0 auto; padding: 0 24px 90px; }
+.doc-head { background: var(--bg-2); border-bottom: 1px solid var(--line); padding: 46px 0 38px; margin-bottom: 44px; }
+.doc-head .doc { padding-bottom: 0; }
+.doc-head h1 { font-size: clamp(27px, 4vw, 38px); margin-bottom: 12px; letter-spacing: -0.02em; }
+.doc-head p { font-size: 15px; color: var(--text-3); }
+.doc h2 { font-size: 21px; margin: 44px 0 14px; }
+.doc h2:first-of-type { margin-top: 0; }
+.doc h3 { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600; margin: 26px 0 8px; }
+.doc p, .doc li { font-size: 16px; line-height: 1.72; color: var(--text-2); }
+.doc p { margin-bottom: 13px; }
+.doc ol, .doc ul { margin: 0 0 13px 0; padding-left: 0; list-style: none; }
+.doc ol { counter-reset: dl; }
+.doc ol > li { counter-increment: dl; position: relative; padding-left: 38px; margin-bottom: 11px; }
+.doc ol > li::before { content: counter(dl) "."; position: absolute; left: 0; top: 0; color: var(--accent); font-variant-numeric: tabular-nums; }
+.doc ul > li { position: relative; padding-left: 20px; margin-bottom: 9px; }
+.doc ul > li::before { content: '—'; position: absolute; left: 0; color: var(--accent); }
+.doc strong { color: var(--text); font-weight: 500; }
+.doc-fill { background: #FFF4CE; color: #6B5A16; padding: 2px 6px; border-radius: 3px; }
+.doc-note { margin: 26px 0; padding: 18px 22px; background: var(--bg-2); border-left: 3px solid var(--accent); font-size: 15px; line-height: 1.65; border-radius: var(--radius); }
+.doc-req { margin-top: 44px; padding-top: 26px; border-top: 1px solid var(--line); font-size: 15.5px; line-height: 1.8; }
+.doc-back { display: inline-block; margin-top: 34px; font-size: 15px; color: var(--accent); text-decoration: none; border-bottom: 1px solid currentColor; }
+@media print { .nav, .doc-back { display: none; } }
