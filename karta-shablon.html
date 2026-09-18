@@ -54,8 +54,10 @@ tr.now td:first-child { box-shadow: inset 3px 0 0 var(--accent); padding-left: 1
 @media print { .k-hint { display: none; } }
 @media (max-width: 760px) {
   .k-you { grid-template-columns: 1fr; }
-  table.k-tab td:first-child { width: 96px; }
   .k-title { font-size: 26px; }
+  .k-tab-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-inline: -24px; padding-inline: 24px; }
+  table.k-tab { min-width: 620px; }
+  table.k-tab td:first-child { width: 110px; }
 }
 </style>
 </head>
@@ -98,7 +100,7 @@ tr.now td:first-child { box-shadow: inset 3px 0 0 var(--accent); padding-left: 1
   <section class="k-block">
     <h2>Этапы</h2>
     <p class="k-note">Подсвечен тот, в котором мы сейчас. Даты ориентировочные: сдвигаются по вашим данным, а не по календарю.</p>
-    <table class="k-tab">
+    <div class="k-tab-wrap"><table class="k-tab">
       <thead>
         <tr><th>Этап</th><th>Что делаем</th><th>Чего ждём</th><th>Признак, что идём правильно</th></tr>
       </thead>
@@ -128,7 +130,7 @@ tr.now td:first-child { box-shadow: inset 3px 0 0 var(--accent); padding-left: 1
           <td>Проходят отпуск, болезнь и командировка — и ничего не разваливается.</td>
         </tr>
       </tbody>
-    </table>
+    </table></div>
   </section>
 
   <section class="k-block">
