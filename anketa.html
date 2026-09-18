@@ -11,26 +11,35 @@
 <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-.f-group { margin-bottom: 30px; }
-.f-group > h2 { font-size: 20px; margin: 0 0 4px; }
-.f-group > .f-hint { font-size: 14.5px; color: var(--text-3); margin-bottom: 16px; line-height: 1.55; }
-.f-row { margin-bottom: 14px; }
+.f-group { margin-bottom: 34px; }
+.f-group > h2 { font-size: 20px; margin: 0 0 6px; }
+.f-group > .f-hint { font-size: 14.5px; color: var(--text-3); margin-bottom: 18px; line-height: 1.6; }
+.f-row { margin-bottom: 15px; }
 .f-row label { display: block; font-size: 14.5px; color: var(--text-2); margin-bottom: 5px; }
 .f-row input[type=text], .f-row textarea {
   width: 100%; font-family: inherit; font-size: 16px; color: var(--text);
   background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
   padding: 11px 13px; line-height: 1.5;
 }
-.f-row textarea { min-height: 66px; resize: vertical; }
+.f-row textarea { min-height: 62px; resize: vertical; }
 .f-row input:focus, .f-row textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
-.f-two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.f-check { display: flex; gap: 11px; align-items: flex-start; margin-bottom: 12px; font-size: 15px; line-height: 1.6; color: var(--text-2); cursor: pointer; }
+.f-row.bad input, .f-row.bad textarea { border-color: #C0392B; background: #FFF6F4; }
+.f-err { display: none; font-size: 13.5px; color: #C0392B; margin-top: 5px; }
+.f-row.bad .f-err { display: block; }
+.f-two { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.f-check { display: flex; gap: 11px; align-items: flex-start; margin-bottom: 13px; font-size: 15px; line-height: 1.6; color: var(--text-2); cursor: pointer; }
 .f-check input { flex: 0 0 auto; width: 19px; height: 19px; margin-top: 2px; accent-color: var(--accent); cursor: pointer; }
-.f-consent { background: var(--bg-2); border-left: 3px solid var(--accent); border-radius: var(--radius); padding: 22px 24px; margin: 34px 0 26px; }
-.f-consent h2 { font-size: 19px; margin-bottom: 10px; }
-.f-actions { position: sticky; bottom: 0; background: linear-gradient(to top, var(--bg) 62%, transparent); padding: 22px 0 26px; }
-.f-status { font-size: 14.5px; color: var(--accent); margin-top: 12px; min-height: 20px; }
-#out { width: 100%; min-height: 200px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13.5px; line-height: 1.6; padding: 14px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); color: var(--text-2); margin-top: 16px; }
+.f-consent { background: var(--bg-2); border-left: 3px solid var(--accent); border-radius: var(--radius); padding: 24px 26px; margin: 36px 0 28px; }
+.f-consent h2 { font-size: 19px; margin-bottom: 8px; }
+.f-consent.bad { border-left-color: #C0392B; background: #FFF6F4; }
+.f-actions { padding: 6px 0 20px; }
+.f-status { font-size: 15px; line-height: 1.6; margin-top: 14px; min-height: 22px; color: var(--accent); }
+.f-status.err { color: #C0392B; }
+.f-done { display: none; text-align: center; padding: 60px 24px; }
+.f-done h2 { font-size: 26px; margin-bottom: 12px; }
+.f-done p { font-size: 17px; color: var(--text-2); max-width: 46ch; margin: 0 auto; }
+.hp { position: absolute; left: -9999px; }
+#out { width: 100%; min-height: 190px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; line-height: 1.6; padding: 14px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); color: var(--text-2); margin-top: 16px; }
 @media (max-width: 620px) { .f-two { grid-template-columns: 1fr; } .f-actions .btn { width: 100%; } }
 </style>
 </head>
@@ -49,73 +58,77 @@
 <div class="doc-head">
   <div class="doc">
     <h1>Анкета перед стартом</h1>
-    <p>Десять минут один раз. Дальше я работаю, а вы — живёте.</p>
+    <p>Пять минут один раз — и больше к этому не возвращаемся.</p>
   </div>
 </div>
 
 <main class="doc">
 
-  <div class="doc-note">
-    <strong>Ничего никуда не отправляется.</strong> Эта страница работает внутри вашего браузера: заполняете поля, нажимаете кнопку внизу — текст копируется, вы вставляете его мне в Telegram одним сообщением. Данные не уходят ни на сайт, ни третьим лицам.
+  <div class="f-done" id="done">
+    <h2>Анкета отправлена</h2>
+    <p>Спасибо. Я всё получил и свяжусь с вами в Telegram. Закрывать страницу можно.</p>
   </div>
 
-  <form id="q" autocomplete="off">
+  <form id="q" autocomplete="off" novalidate>
 
     <div class="f-group">
-      <h2>1. Кто вы</h2>
-      <div class="f-two">
-        <div class="f-row"><label for="fio">Фамилия, имя, отчество</label><input type="text" id="fio"></div>
-        <div class="f-row"><label for="dr">Дата рождения</label><input type="text" id="dr" placeholder="12.03.1985"></div>
+      <div class="f-row" id="r-fio">
+        <label for="fio">Фамилия, имя, отчество</label>
+        <input type="text" id="fio" name="fio" maxlength="90" placeholder="Отчество — если есть">
+        <span class="f-err">Только буквы, пробелы и дефис. Минимум два слова.</span>
       </div>
       <div class="f-two">
-        <div class="f-row"><label for="gorod">Город и часовой пояс</label><input type="text" id="gorod"></div>
-        <div class="f-row"><label for="svyaz">Как удобнее связь</label><input type="text" id="svyaz" placeholder="Telegram / телефон"></div>
+        <div class="f-row" id="r-dr">
+          <label for="dr">Дата рождения</label>
+          <input type="text" id="dr" name="dr" inputmode="numeric" maxlength="10" placeholder="12.03.1985">
+          <span class="f-err">В формате 00.00.0000.</span>
+        </div>
+        <div class="f-row" id="r-tg">
+          <label for="tg">Ваш ник в Telegram</label>
+          <input type="text" id="tg" name="tg" maxlength="40" placeholder="@username">
+          <span class="f-err">Заполните — иначе я не пойму, чья анкета.</span>
+        </div>
       </div>
       <div class="f-two">
-        <div class="f-row"><label for="rost">Рост</label><input type="text" id="rost"></div>
-        <div class="f-row"><label for="ves">Вес сейчас, примерно</label><input type="text" id="ves"></div>
+        <div class="f-row" id="r-rost">
+          <label for="rost">Рост, см</label>
+          <input type="text" id="rost" name="rost" inputmode="numeric" maxlength="3" placeholder="178">
+          <span class="f-err">Число от 120 до 230.</span>
+        </div>
+        <div class="f-row" id="r-ves">
+          <label for="ves">Вес сейчас, кг</label>
+          <input type="text" id="ves" name="ves" inputmode="numeric" maxlength="3" placeholder="95">
+          <span class="f-err">Число от 35 до 300.</span>
+        </div>
       </div>
     </div>
 
     <div class="f-group">
-      <h2>2. Зачем вы здесь</h2>
-      <p class="f-hint">Своими словами. Не «похудеть на 10 кг», а то, ради чего вы это затеяли.</p>
-      <div class="f-row"><label for="zadacha">Что хотите изменить</label><textarea id="zadacha"></textarea></div>
-      <div class="f-row"><label for="probovali">Что уже пробовали и на чём остановились</label><textarea id="probovali"></textarea></div>
+      <h2>Здоровье</h2>
+      <p class="f-hint">Единственный раздел, который здесь по-настоящему нужен. Я не врач и лечением не занимаюсь — эти ответы нужны, чтобы не навредить и чтобы вовремя отправить вас к тому, кто занимается. Если чего-то нет — напишите «нет», пустое поле хуже любого ответа.</p>
+      <div class="f-row"><label for="bolezni">Заболевания, которые вам ставили</label><textarea id="bolezni" name="bolezni" maxlength="1200"></textarea></div>
+      <div class="f-row"><label for="travmy">Травмы и операции — что и когда</label><textarea id="travmy" name="travmy" maxlength="1200"></textarea></div>
+      <div class="f-row"><label for="preparaty">Препараты, которые принимаете постоянно</label><textarea id="preparaty" name="preparaty" maxlength="1200"></textarea></div>
+      <div class="f-row"><label for="vrach">Что врач запрещал или ограничивал</label><textarea id="vrach" name="vrach" maxlength="1200" placeholder="Нагрузки, продукты, что угодно"></textarea></div>
+      <div class="f-row"><label for="obsled">Когда последний раз были у врача и по какому поводу</label><textarea id="obsled" name="obsled" maxlength="1200"></textarea></div>
+      <div class="f-row"><label for="bespokoit">Что беспокоит прямо сейчас</label><textarea id="bespokoit" name="bespokoit" maxlength="1200" placeholder="Спина, колени, давление, сердцебиение, желудок, сон"></textarea></div>
+      <div class="f-row"><label for="edaogr">Аллергии, непереносимость, чего не едите</label><textarea id="edaogr" name="edaogr" maxlength="1200"></textarea></div>
+      <div class="f-row"><label for="berem">Беременность или её планирование</label><input type="text" id="berem" name="berem" maxlength="120" placeholder="Если не про вас — напишите «нет»"></div>
     </div>
 
-    <div class="f-group">
-      <h2>3. Здоровье</h2>
-      <p class="f-hint">Самый важный раздел. Я не врач и лечением не занимаюсь — эти ответы нужны, чтобы не навредить и чтобы вовремя отправить вас к тому, кто занимается. Пустые поля здесь опаснее любого ответа.</p>
-      <div class="f-row"><label for="bolezni">Заболевания, которые вам ставили</label><textarea id="bolezni" placeholder="Если ничего — так и напишите"></textarea></div>
-      <div class="f-row"><label for="travmy">Травмы и операции — когда и что</label><textarea id="travmy"></textarea></div>
-      <div class="f-row"><label for="preparaty">Препараты, которые принимаете постоянно</label><textarea id="preparaty"></textarea></div>
-      <div class="f-row"><label for="vrach">Назначения и ограничения от врача</label><textarea id="vrach" placeholder="Что вам говорили можно и чего нельзя"></textarea></div>
-      <div class="f-row"><label for="obsled">Когда последний раз обследовались и что проверяли</label><textarea id="obsled"></textarea></div>
-      <div class="f-row"><label for="bespokoit">Что беспокоит прямо сейчас</label><textarea id="bespokoit" placeholder="Спина, колени, давление, сердцебиение, ЖКТ, сон — что угодно"></textarea></div>
-      <div class="f-row"><label for="edaogr">Чего не едите и на что реакция</label><textarea id="edaogr" placeholder="Аллергии, непереносимость, принципиальные ограничения"></textarea></div>
-      <div class="f-row"><label for="berem">Беременность или её планирование</label><input type="text" id="berem" placeholder="Если не применимо — прочерк"></div>
+    <div class="f-consent" id="r-consent">
+      <h2>Подтверждения</h2>
+      <p class="f-hint" style="margin-bottom:18px">Три галочки, без них начать нельзя — так требует закон. Полные тексты: <a href="oferta.html" style="color:var(--accent)">оферта</a>, <a href="privacy.html" style="color:var(--accent)">политика</a>, <a href="soglasie.html" style="color:var(--accent)">согласие</a>.</p>
+      <label class="f-check"><input type="checkbox" id="c1" name="c1"><span>Мне исполнилось 18 лет, и о здоровье я написал честно и полностью.</span></label>
+      <label class="f-check"><input type="checkbox" id="c2" name="c2"><span>Я прочитал оферту и понимаю, что услуги <strong>не медицинские</strong>: диагнозы не ставятся, лечение и лечебное питание не назначаются, анализы не трактуются.</span></label>
+      <label class="f-check"><input type="checkbox" id="c3" name="c3"><span>Даю согласие на обработку моих данных, включая сведения о здоровье, и на их передачу лицам, перечисленным в согласии.</span></label>
+      <span class="f-err" style="margin-top:6px">Нужны все три.</span>
     </div>
 
-    <div class="f-group">
-      <h2>4. Как устроена ваша неделя</h2>
-      <div class="f-row"><label for="rabota">Работа: график, нагрузка, командировки</label><textarea id="rabota"></textarea></div>
-      <div class="f-row"><label for="son">Сон: во сколько ложитесь, сколько спите</label><textarea id="son"></textarea></div>
-      <div class="f-row"><label for="trenirovki">Тренируетесь ли сейчас и как</label><textarea id="trenirovki"></textarea></div>
-      <div class="f-row"><label for="skolko">Сколько дней в неделю реально готовы тренироваться</label><input type="text" id="skolko"></div>
-      <div class="f-row"><label for="pitanie">Как обычно едите: завтрак, обед, ужин, перекусы</label><textarea id="pitanie"></textarea></div>
-    </div>
-
-    <div class="f-consent">
-      <h2>5. Подтверждения</h2>
-      <p class="f-hint" style="margin-bottom:16px">Без этих трёх галочек начать работу нельзя — так требует закон. Полные тексты: <a href="oferta.html" style="color:var(--accent)">оферта</a>, <a href="privacy.html" style="color:var(--accent)">политика</a>, <a href="soglasie.html" style="color:var(--accent)">согласие</a>.</p>
-      <label class="f-check"><input type="checkbox" id="c1"><span>Мне исполнилось 18 лет, и сведения о здоровье выше я указал достоверно и полностью.</span></label>
-      <label class="f-check"><input type="checkbox" id="c2"><span>Я прочитал оферту и понимаю, что услуги <strong>не являются медицинскими</strong>: диагнозы не ставятся, лечение и лечебное питание не назначаются, анализы не трактуются.</span></label>
-      <label class="f-check"><input type="checkbox" id="c3"><span>Даю согласие на обработку моих персональных данных, включая сведения о состоянии здоровья, и на их передачу лицам, перечисленным в согласии.</span></label>
-    </div>
+    <input type="text" class="hp" id="company" name="company" tabindex="-1" aria-hidden="true">
 
     <div class="f-actions">
-      <button type="button" class="btn btn-primary" id="go">Собрать и скопировать</button>
+      <button type="submit" class="btn btn-primary" id="go">Отправить анкету</button>
       <p class="f-status" id="st"></p>
       <textarea id="out" readonly hidden></textarea>
     </div>
@@ -128,85 +141,132 @@
 
 <script>
 (function () {
-  var F = ['fio','dr','gorod','svyaz','rost','ves','zadacha','probovali','bolezni','travmy',
-           'preparaty','vrach','obsled','bespokoit','edaogr','berem','rabota','son',
-           'trenirovki','skolko','pitanie'];
-  var L = {
-    fio:'ФИО', dr:'Дата рождения', gorod:'Город и часовой пояс', svyaz:'Связь',
-    rost:'Рост', ves:'Вес сейчас', zadacha:'Что хочу изменить', probovali:'Что пробовал раньше',
-    bolezni:'Заболевания', travmy:'Травмы и операции', preparaty:'Препараты',
-    vrach:'Назначения и ограничения врача', obsled:'Последнее обследование',
-    bespokoit:'Что беспокоит сейчас', edaogr:'Ограничения по еде', berem:'Беременность',
-    rabota:'Работа и поездки', son:'Сон', trenirovki:'Тренировки сейчас',
-    skolko:'Дней в неделю готов тренироваться', pitanie:'Как обычно ем'
-  };
-  var GROUPS = [
-    ['КТО Я', ['fio','dr','gorod','svyaz','rost','ves']],
-    ['ЗАДАЧА', ['zadacha','probovali']],
-    ['ЗДОРОВЬЕ', ['bolezni','travmy','preparaty','vrach','obsled','bespokoit','edaogr','berem']],
-    ['НЕДЕЛЯ', ['rabota','son','trenirovki','skolko','pitanie']]
-  ];
-  var st = document.getElementById('st'), out = document.getElementById('out');
+  var form = document.getElementById('q'), st = document.getElementById('st'),
+      out = document.getElementById('out'), done = document.getElementById('done'),
+      btn = document.getElementById('go');
 
-  function val(id) { var e = document.getElementById(id); return e ? e.value.trim() : ''; }
+  var HEALTH = [
+    ['bolezni','Заболевания'], ['travmy','Травмы и операции'], ['preparaty','Препараты'],
+    ['vrach','Запреты и ограничения врача'], ['obsled','Последний визит к врачу'],
+    ['bespokoit','Что беспокоит сейчас'], ['edaogr','Аллергии и ограничения в еде'],
+    ['berem','Беременность']
+  ];
+
+  /* --- маска даты --- */
+  var dr = document.getElementById('dr');
+  dr.addEventListener('input', function () {
+    var v = dr.value.replace(/\D/g, '').slice(0, 8), r = '';
+    if (v.length > 0) r = v.slice(0, 2);
+    if (v.length > 2) r += '.' + v.slice(2, 4);
+    if (v.length > 4) r += '.' + v.slice(4, 8);
+    dr.value = r;
+  });
+
+  /* --- только буквы в ФИО --- */
+  var fio = document.getElementById('fio');
+  fio.addEventListener('input', function () {
+    fio.value = fio.value.replace(/[^А-Яа-яЁёA-Za-z \-]/g, '');
+  });
+
+  /* --- только цифры --- */
+  ['rost', 'ves'].forEach(function (id) {
+    var el = document.getElementById(id);
+    el.addEventListener('input', function () { el.value = el.value.replace(/\D/g, ''); });
+  });
+
+  function v(id) { return (document.getElementById(id).value || '').trim(); }
+  function mark(rowId, bad) {
+    var r = document.getElementById(rowId);
+    if (r) r.classList.toggle('bad', !!bad);
+    return !bad;
+  }
+
+  function validDate(s) {
+    var m = /^(\d{2})\.(\d{2})\.(\d{4})$/.exec(s);
+    if (!m) return false;
+    var d = +m[1], mo = +m[2], y = +m[3], now = new Date().getFullYear();
+    if (mo < 1 || mo > 12 || d < 1 || d > 31) return false;
+    if (y < 1920 || y > now - 18) return false;
+    var dt = new Date(y, mo - 1, d);
+    return dt.getDate() === d && dt.getMonth() === mo - 1;
+  }
+
+  function check() {
+    var ok = true;
+    ok = mark('r-fio', !/^[А-Яа-яЁёA-Za-z\-]{2,}(\s+[А-Яа-яЁёA-Za-z\-]{2,}){1,2}$/.test(v('fio'))) && ok;
+    ok = mark('r-dr', !validDate(v('dr'))) && ok;
+    ok = mark('r-tg', v('tg').length < 2) && ok;
+    var r = +v('rost'), w = +v('ves');
+    ok = mark('r-rost', !(r >= 120 && r <= 230)) && ok;
+    ok = mark('r-ves', !(w >= 35 && w <= 300)) && ok;
+    var c = document.getElementById('c1').checked && document.getElementById('c2').checked && document.getElementById('c3').checked;
+    document.getElementById('r-consent').classList.toggle('bad', !c);
+    return ok && c;
+  }
 
   function today() {
     var d = new Date(), p = function (n) { return (n < 10 ? '0' : '') + n; };
     return p(d.getDate()) + '.' + p(d.getMonth() + 1) + '.' + d.getFullYear();
   }
 
-  function build() {
+  function buildText() {
     var t = 'АНКЕТА ПЕРЕД СТАРТОМ\n\n';
-    GROUPS.forEach(function (g) {
-      t += g[0] + '\n';
-      g[1].forEach(function (id) {
-        var v = val(id);
-        t += L[id] + ': ' + (v || '—') + '\n';
-      });
-      t += '\n';
-    });
-    t += 'ПОДТВЕРЖДЕНИЯ\n';
-    t += 'Я, ' + (val('fio') || '—') + ', ' + (val('dr') || '—') + ', подтверждаю:\n';
+    t += v('fio') + ', ' + v('dr') + '\n';
+    t += 'Telegram: ' + v('tg') + '\n';
+    t += 'Рост ' + v('rost') + ' см, вес ' + v('ves') + ' кг\n\n';
+    t += 'ЗДОРОВЬЕ\n';
+    HEALTH.forEach(function (p) { t += p[1] + ': ' + (v(p[0]) || '—') + '\n'; });
+    t += '\nПОДТВЕРЖДЕНИЯ\n';
+    t += 'Я, ' + v('fio') + ', ' + v('dr') + ', подтверждаю:\n';
     t += '— мне исполнилось 18 лет, сведения о здоровье указаны достоверно и полностью;\n';
     t += '— я ознакомился с офертой и понимаю, что услуги не являются медицинскими;\n';
-    t += '— даю согласие на обработку моих персональных данных, включая сведения о состоянии\n';
-    t += '  здоровья, и на их передачу лицам, указанным в согласии на сайте gromov.fit.\n';
+    t += '— даю согласие на обработку моих персональных данных, включая сведения\n';
+    t += '  о состоянии здоровья, и на их передачу лицам, указанным в согласии\n';
+    t += '  на сайте gromov.fit.\n';
     t += 'Дата: ' + today() + '\n';
     return t;
   }
 
-  function missing() {
-    var m = [];
-    if (!val('fio')) m.push('фамилию, имя и отчество');
-    if (!val('dr')) m.push('дату рождения');
-    if (!document.getElementById('c1').checked ||
-        !document.getElementById('c2').checked ||
-        !document.getElementById('c3').checked) m.push('все три галочки в пятом разделе');
-    return m;
+  function fallback(text, msg) {
+    st.className = 'f-status err';
+    st.textContent = msg + ' Скопируйте текст ниже и отправьте мне в Telegram.';
+    out.value = text; out.hidden = false; out.focus(); out.select();
   }
 
-  document.getElementById('go').addEventListener('click', function () {
-    var m = missing();
-    if (m.length) {
-      st.textContent = 'Не хватает: ' + m.join(', ') + '.';
-      out.hidden = true;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    st.className = 'f-status'; st.textContent = '';
+    if (!check()) {
+      st.className = 'f-status err';
+      st.textContent = 'Проверьте поля, отмеченные красным.';
+      var bad = document.querySelector('.bad');
+      if (bad) bad.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
-    var text = build();
-    out.value = text;
-    out.hidden = false;
-    var ok = function () {
-      st.textContent = 'Готово — анкета в буфере обмена. Вставьте её мне в Telegram одним сообщением.';
-    };
-    var fallback = function () {
-      st.textContent = 'Скопируйте текст ниже вручную и отправьте мне в Telegram.';
-      out.focus(); out.select();
-    };
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(ok).catch(fallback);
-    } else {
-      fallback();
-    }
+    var text = buildText();
+    btn.disabled = true;
+    st.textContent = 'Отправляю…';
+
+    var data = new FormData(form);
+    data.append('text', text);
+    data.append('date', today());
+
+    fetch('anketa.php', { method: 'POST', body: data })
+      .then(function (r) { return r.json().catch(function () { throw new Error('bad'); }); })
+      .then(function (j) {
+        if (j && j.ok) {
+          form.style.display = 'none';
+          done.style.display = 'block';
+          done.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          btn.disabled = false;
+          fallback(text, 'Отправить не получилось.');
+        }
+      })
+      .catch(function () {
+        btn.disabled = false;
+        fallback(text, 'Отправить не получилось.');
+      });
   });
 })();
 </script>

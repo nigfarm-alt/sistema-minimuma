@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Согласие на публикацию истории — Дмитрий Громов</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23C1502E'/><text x='50' y='69' font-size='54' text-anchor='middle' fill='%23FBFAF8' font-family='Georgia, serif' font-weight='700'>Г</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.f-row { margin-bottom: 15px; }
+.f-row label { display: block; font-size: 14.5px; color: var(--text-2); margin-bottom: 5px; }
+.f-row input[type=text] { width: 100%; font-family: inherit; font-size: 16px; color: var(--text); background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 11px 13px; }
+.f-row input:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+.f-row.bad input { border-color: #C0392B; background: #FFF6F4; }
+.f-err { display: none; font-size: 13.5px; color: #C0392B; margin-top: 5px; }
+.f-row.bad .f-err { display: block; }
+.f-two { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.f-check { display: flex; gap: 11px; align-items: flex-start; margin-bottom: 14px; font-size: 15.5px; line-height: 1.6; color: var(--text-2); cursor: pointer; }
+.f-check input { flex: 0 0 auto; width: 19px; height: 19px; margin-top: 2px; accent-color: var(--accent); cursor: pointer; }
+.f-box { background: var(--bg-2); border-left: 3px solid var(--accent); border-radius: var(--radius); padding: 24px 26px; margin: 30px 0; }
+.f-box h2 { font-size: 19px; margin-bottom: 6px; }
+.f-box.bad { border-left-color: #C0392B; background: #FFF6F4; }
+.f-status { font-size: 15px; line-height: 1.6; margin-top: 14px; min-height: 22px; color: var(--accent); }
+.f-status.err { color: #C0392B; }
+.f-done { display: none; text-align: center; padding: 60px 24px; }
+.f-done h2 { font-size: 26px; margin-bottom: 12px; }
+.f-done p { font-size: 17px; color: var(--text-2); max-width: 46ch; margin: 0 auto; }
+.hp { position: absolute; left: -9999px; }
+#out { width: 100%; min-height: 180px; font-family: ui-monospace, monospace; font-size: 13px; line-height: 1.6; padding: 14px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); color: var(--text-2); margin-top: 16px; }
+@media (max-width: 620px) { .f-two { grid-template-columns: 1fr; } .btn { width: 100%; } }
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">Дмитрий <span>Громов</span></a>
+    <nav class="nav-links">
+      <a href="privacy.html">Политика</a>
+      <a href="soglasie.html">Согласие</a>
+    </nav>
+  </div>
+</header>
+
+<div class="doc-head">
+  <div class="doc">
+    <h1>Согласие на публикацию вашей истории</h1>
+    <p>Отдельный документ. Подписывается по желанию и отзывается в любой момент.</p>
+  </div>
+</div>
+
+<main class="doc">
+
+  <div class="f-done" id="done">
+    <h2>Спасибо</h2>
+    <p>Согласие получено. Опубликую только то, что вы отметили, и в том виде, который мы согласуем.</p>
+  </div>
+
+  <form id="q" autocomplete="off" novalidate>
+
+    <div class="doc-note">
+      <strong>Это добровольно и ни на что не влияет.</strong> Отказ никак не отражается на работе, её стоимости и на моём отношении. Закон прямо запрещает ставить услуги в зависимость от такого согласия, и я этого не делаю. Если сомневаетесь — не подписывайте, вернёмся к разговору позже или никогда.
+    </div>
+
+    <h2>Что это за документ</h2>
+    <p>Публикация вашей истории — это <strong>распространение персональных данных</strong>, и закон (статья 10.1 Федерального закона № 152-ФЗ) требует для неё отдельного согласия: оно не может быть спрятано внутри других документов и не может считаться данным по умолчанию.</p>
+    <p>Поэтому здесь вы сами отмечаете, что именно разрешаете. Что не отмечено — не публикуется.</p>
+
+    <h2>Кто вы</h2>
+    <div class="f-row" id="r-fio">
+      <label for="fio">Фамилия, имя, отчество</label>
+      <input type="text" id="fio" name="fio" maxlength="90">
+      <span class="f-err">Только буквы. Минимум два слова.</span>
+    </div>
+    <div class="f-two">
+      <div class="f-row" id="r-dr">
+        <label for="dr">Дата рождения</label>
+        <input type="text" id="dr" name="dr" inputmode="numeric" maxlength="10" placeholder="12.03.1985">
+        <span class="f-err">В формате 00.00.0000.</span>
+      </div>
+      <div class="f-row" id="r-tg">
+        <label for="tg">Ваш ник в Telegram</label>
+        <input type="text" id="tg" name="tg" maxlength="40" placeholder="@username">
+        <span class="f-err">Заполните.</span>
+      </div>
+    </div>
+
+    <div class="f-box" id="r-what">
+      <h2>Что разрешаю публиковать</h2>
+      <p style="font-size:14.5px;color:var(--text-3);margin-bottom:18px;line-height:1.6">Отметьте нужное. Хотя бы один пункт, иначе публиковать нечего.</p>
+      <label class="f-check"><input type="checkbox" name="w" value="фотографии «до» и «после»"><span>Фотографии «до» и «после»</span></label>
+      <label class="f-check"><input type="checkbox" name="w" value="цифры: вес, состав тела, обхваты"><span>Цифры: вес, состав тела, обхваты</span></label>
+      <label class="f-check"><input type="checkbox" name="w" value="мой отзыв или цитату из переписки"><span>Мой отзыв или цитату из переписки</span></label>
+      <label class="f-check"><input type="checkbox" name="w" value="скриншоты переписки с закрытым именем и фото профиля"><span>Скриншоты переписки — с закрытым именем и фото профиля</span></label>
+      <label class="f-check"><input type="checkbox" name="w" value="видеоотзыв"><span>Видеоотзыв</span></label>
+      <span class="f-err" style="margin-top:6px">Отметьте хотя бы один пункт.</span>
+    </div>
+
+    <div class="f-box" id="r-name">
+      <h2>Как меня называть</h2>
+      <label class="f-check"><input type="radio" name="how" value="имя и фамилия"><span>Имя и фамилия</span></label>
+      <label class="f-check"><input type="radio" name="how" value="только имя"><span>Только имя</span></label>
+      <label class="f-check"><input type="radio" name="how" value="без имени, анонимно"><span>Без имени — «клиент», «мужчина 42 лет»</span></label>
+      <span class="f-err" style="margin-top:6px">Выберите один вариант.</span>
+    </div>
+
+    <div class="f-box" id="r-job">
+      <h2>Род занятий</h2>
+      <label class="f-check"><input type="radio" name="job" value="можно указывать род занятий без названия компании"><span>Можно указать чем занимаюсь — без названия компании</span></label>
+      <label class="f-check"><input type="radio" name="job" value="род занятий не указывать"><span>Не указывать</span></label>
+      <span class="f-err" style="margin-top:6px">Выберите один вариант.</span>
+    </div>
+
+    <h2>На каких условиях</h2>
+    <ol>
+      <li>Публикация возможна на сайте gromov.fit, в моих каналах в мессенджерах и социальных сетях, на видеоплощадках — в целях рассказа о работе и её результатах.</li>
+      <li><strong>Согласие бессрочное, но отзывается в любой момент</strong> — одним сообщением на почту или в мессенджер, без объяснения причин. С момента отзыва материалы снимаются с публикации в течение трёх рабочих дней.</li>
+      <li>Материалы не передаются третьим лицам для рекламы, не продаются и не используются в отрыве от рассказа о работе.</li>
+      <li><strong>Медицинские сведения не публикуются</strong> ни в каком виде: ни диагнозы, ни назначения, ни результаты обследований — даже если вы их разрешите.</li>
+      <li>Перед первой публикацией я показываю вам готовый материал. Что-то не нравится — правим или не публикуем.</li>
+    </ol>
+
+    <div class="f-box" id="r-consent">
+      <h2>Подтверждение</h2>
+      <label class="f-check"><input type="checkbox" id="c1"><span>Я даю согласие на распространение отмеченных выше персональных данных на изложенных условиях. Согласие дано добровольно, оказание услуг от него не зависит.</span></label>
+      <span class="f-err" style="margin-top:6px">Без галочки нельзя.</span>
+    </div>
+
+    <input type="text" class="hp" id="company" name="company" tabindex="-1" aria-hidden="true">
+
+    <div style="padding-bottom:20px">
+      <button type="submit" class="btn btn-primary" id="go">Отправить согласие</button>
+      <p class="f-status" id="st"></p>
+      <textarea id="out" readonly hidden></textarea>
+    </div>
+
+  </form>
+
+  <a class="doc-back" href="index.html">← Вернуться на главную</a>
+
+</main>
+
+<script>
+(function () {
+  var form = document.getElementById('q'), st = document.getElementById('st'),
+      out = document.getElementById('out'), done = document.getElementById('done'),
+      btn = document.getElementById('go');
+
+  var dr = document.getElementById('dr');
+  dr.addEventListener('input', function () {
+    var v = dr.value.replace(/\D/g, '').slice(0, 8), r = '';
+    if (v.length > 0) r = v.slice(0, 2);
+    if (v.length > 2) r += '.' + v.slice(2, 4);
+    if (v.length > 4) r += '.' + v.slice(4, 8);
+    dr.value = r;
+  });
+  var fio = document.getElementById('fio');
+  fio.addEventListener('input', function () { fio.value = fio.value.replace(/[^А-Яа-яЁёA-Za-z \-]/g, ''); });
+
+  function v(id) { return (document.getElementById(id).value || '').trim(); }
+  function mark(id, bad) { var r = document.getElementById(id); if (r) r.classList.toggle('bad', !!bad); return !bad; }
+  function picked(name) { var e = form.querySelector('input[name="' + name + '"]:checked'); return e ? e.value : ''; }
+  function checkedList() {
+    return Array.prototype.slice.call(form.querySelectorAll('input[name="w"]:checked')).map(function (e) { return e.value; });
+  }
+  function validDate(s) {
+    var m = /^(\d{2})\.(\d{2})\.(\d{4})$/.exec(s); if (!m) return false;
+    var d = +m[1], mo = +m[2], y = +m[3], now = new Date().getFullYear();
+    if (mo < 1 || mo > 12 || d < 1 || d > 31 || y < 1920 || y > now - 18) return false;
+    var dt = new Date(y, mo - 1, d);
+    return dt.getDate() === d && dt.getMonth() === mo - 1;
+  }
+  function today() {
+    var d = new Date(), p = function (n) { return (n < 10 ? '0' : '') + n; };
+    return p(d.getDate()) + '.' + p(d.getMonth() + 1) + '.' + d.getFullYear();
+  }
+
+  function check() {
+    var ok = true;
+    ok = mark('r-fio', !/^[А-Яа-яЁёA-Za-z\-]{2,}(\s+[А-Яа-яЁёA-Za-z\-]{2,}){1,2}$/.test(v('fio'))) && ok;
+    ok = mark('r-dr', !validDate(v('dr'))) && ok;
+    ok = mark('r-tg', v('tg').length < 2) && ok;
+    ok = mark('r-what', checkedList().length === 0) && ok;
+    ok = mark('r-name', !picked('how')) && ok;
+    ok = mark('r-job', !picked('job')) && ok;
+    ok = mark('r-consent', !document.getElementById('c1').checked) && ok;
+    return ok;
+  }
+
+  function buildText() {
+    var t = 'СОГЛАСИЕ НА РАСПРОСТРАНЕНИЕ ПЕРСОНАЛЬНЫХ ДАННЫХ\n';
+    t += '(статья 10.1 Федерального закона № 152-ФЗ)\n\n';
+    t += v('fio') + ', ' + v('dr') + '\n';
+    t += 'Telegram: ' + v('tg') + '\n\n';
+    t += 'РАЗРЕШАЮ ПУБЛИКОВАТЬ:\n';
+    checkedList().forEach(function (x) { t += '— ' + x + '\n'; });
+    t += '\nКАК НАЗЫВАТЬ: ' + picked('how') + '\n';
+    t += 'РОД ЗАНЯТИЙ: ' + picked('job') + '\n\n';
+    t += 'Согласие дано добровольно, оказание услуг от него не зависит.\n';
+    t += 'Условия публикации, изложенные на странице gromov.fit/soglasie-publikaciya.html,\n';
+    t += 'прочитаны и приняты. Согласие может быть отозвано мной в любой момент.\n';
+    t += 'Медицинские сведения публикации не подлежат.\n';
+    t += 'Дата: ' + today() + '\n';
+    return t;
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    st.className = 'f-status'; st.textContent = '';
+    if (!check()) {
+      st.className = 'f-status err';
+      st.textContent = 'Проверьте поля, отмеченные красным.';
+      var bad = document.querySelector('.bad');
+      if (bad) bad.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    var text = buildText();
+    btn.disabled = true; st.textContent = 'Отправляю…';
+    var data = new FormData();
+    data.append('kind', 'publikaciya');
+    data.append('fio', v('fio')); data.append('tg', v('tg'));
+    data.append('c1', '1'); data.append('c2', '1'); data.append('c3', '1');
+    data.append('text', text);
+
+    fetch('anketa.php', { method: 'POST', body: data })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (j && j.ok) { form.style.display = 'none'; done.style.display = 'block'; done.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+        else { throw new Error('no'); }
+      })
+      .catch(function () {
+        btn.disabled = false;
+        st.className = 'f-status err';
+        st.textContent = 'Отправить не получилось. Скопируйте текст ниже и пришлите мне в Telegram.';
+        out.value = text; out.hidden = false; out.focus(); out.select();
+      });
+  });
+})();
+</script>
+
+</body>
+</html>
